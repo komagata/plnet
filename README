@@ -1,5 +1,13 @@
-= Plnet
+= Plnet - feed aggregation service.
 
 = Description
 
   plnet is feed aggregation service.
+  http://plnet.jp
+
+== Copyright
+
+Author::    Masaki Komagata <komagata@gmail.com>
+            Kawadu Takahiro <kawadu@gmail.com>
+Copyright:: Copyright (c) 2008 Plnet
+License::   MIT license
