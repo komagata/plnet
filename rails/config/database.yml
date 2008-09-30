@@ -1,0 +1,29 @@
+development:
+  adapter: mysql
+  encoding: utf8
+  database: plnet_development
+  username: root
+  password:
+  socket: <%= ["/tmp/mysqld.sock",
+                "/var/run/mysqld/mysqld.sock",
+                "/var/lib/mysql/mysql.sock"].detect {|s| File.exist?(s) } %>
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: plnet_test
+  username: root
+  password:
+  socket: <%= ["/tmp/mysqld.sock",
+                "/var/run/mysqld/mysqld.sock",
+                "/var/lib/mysql/mysql.sock"].detect {|s| File.exist?(s) } %>
+
+production:
+  adapter: mysql
+  encoding: utf8
+  database: plnet_production
+  username: plnet
+  password: plnet@dmin
+  socket: <%= ["/tmp/mysqld.sock",
+                "/var/run/mysqld/mysqld.sock",
+                "/var/lib/mysql/mysql.sock"].detect {|s| File.exist?(s) } %>

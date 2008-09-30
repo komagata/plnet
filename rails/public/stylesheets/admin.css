@@ -1,0 +1,358 @@
+body {
+  margin: 0; padding: 0;
+  font-size: 14px;
+/*   font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif; */
+  font-family: "Trebuchet MS", Arial, Helvetica, verdana, osaka, ms gothic, sans-serif; 
+/*  background: url(/images/bg.png) repeat-y center top; text-align: center; */
+/*  background: url(/images/bg.gif) repeat; */
+  background: #ccc;
+  color: #333;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+a {
+  color: #009;
+}
+
+a:link {
+}
+
+a:visited {
+}
+
+a:hover {
+}
+
+img {
+  border: 0;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0 0 10px 0;
+}
+
+h2 {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+ul {
+  list-style: square;
+}
+
+li {
+  margin: 5px 0;
+}
+
+#container {
+  position: relative;
+  background: #fff;
+  margin: 0 auto;
+}
+
+#header {
+  margin: 0 auto;
+  padding: 15px;
+  position: relative;
+  text-align: left;
+  color: #fff;
+/*  background: url(/images/header.png) repeat-x; */
+  background: #5A0029;
+}
+
+#title a {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+#description {
+  margin: 5px 0 0 0;
+}
+
+#menu {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 14px;
+  color: #fff;
+}
+
+#menu a {
+  color: #fff;
+}
+
+#menu ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#menu ul li {
+  display: inline;
+  margin: 0 6px;
+  padding: 0;
+}
+
+ul#tab {
+  margin: 0;
+  padding: 8px 20px 8px 10px;
+  font-weight: bold;
+  list-style-type: none;
+  border-bottom: 1px solid #fff;
+  background: #5A0029;
+  text-align: right;
+}
+
+ul#tab li {
+  display: inline;
+}
+
+ul#tab li a {
+  /* set padding (tab size) as desired; FIRST number must change with respect to padding-top (X) above */
+  padding: 8px 12px;
+  /* set border COLOR as desired; usually matches border color specified in #tabnav */
+  border: 0px solid #fff; 
+  /* set additional spacing between tabs as desired */
+  margin-right: 0;
+  text-decoration: none;
+  border-bottom: none;
+  background: #AD8E63;
+}
+
+/* for IE6 */
+* html ul#tab li a {
+  padding: 9px 10px;
+}
+
+/* for IE7 */
+*:first-child+html ul#tab li a {
+  padding: 9px 10px;
+}
+
+ul#tab li.selected { /* settings for selected tab */
+  /* set border color to page background color */
+  border-bottom: 1px solid #fff;
+  /* set background color to match above border color */
+  background-color: #fff;
+}
+
+ul#tab li.selected a { /* settings for selected tab link */
+  /* set selected tab background color as desired */
+  background-color: #fff;
+  /* set selected tab link color as desired */
+  color: #333;
+  position: relative;
+  top: 1px;
+  /* must change with respect to padding (X) above and below */
+  padding-top: 9px;
+}
+
+/* for IE6 */
+* html ul#tab li.selected a {
+  padding-top: 10px;
+}
+
+/* for IE7 */
+*:first-child+html ul#tab li.selected a { /* settings for selected tab link */
+  padding-top: 10px;
+}
+
+#content {
+  clear: both;
+  position: relative;
+  margin: 0 auto;
+  text-align: left;
+  background: #fff;
+  width: 100%;
+}
+
+#main {
+  float: left;
+  padding: 15px;
+}
+
+#sidebar {
+  float: right;
+  width: 200px;
+  padding: 15px;
+}
+
+#sidebar ul {
+  list-style-type: square;
+  margin: auto;
+}
+
+#sidebar li {
+  margin: 5px 0;
+}
+
+#footer {
+  clear: both;
+  margin: 0 auto;
+  padding: 10px 0;
+  height: 80px;
+  width: 100%;
+  line-height: 160%;
+  text-align: center;
+  border-top: solid 1px #666;
+  background: #ccc;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.icon {
+  vertical-align: middle;
+  border: none;
+  margin: 0 6px 3px 0;
+}
+
+.simple-table {
+  margin: 10px 0;
+  border-collapse: collapse;
+/*  border-collapse: separate; border-spacing: 0px; */
+  background: #fff;
+  border-top: solid 1px black;
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+}
+
+.simple-table th {
+  text-align: left;
+  background: #5A0029;
+  color: #fff;
+}
+
+.simple-table tr.even {
+  background: #fff;
+}
+
+.simple-table tr.disable {
+  background: #ccc;
+}
+
+.simple-table tr {
+  border: solid 1px black;
+}
+
+.simple-table tr.odd {
+  background: #FFC394;
+}
+
+.simple-table th,
+.simple-table td {
+  font-size: 14px;
+  padding: 6px;
+  border: solid 1px black;
+}
+
+.simple-table td {
+  border-bottom: solid 1px black;
+}
+
+.simple-table td.top {
+  vertical-align: top;
+}
+
+.simple-table input, 
+.simple-table textarea,
+.simple-table select {
+  font-size: 14px;
+}
+
+.hidden-table td {
+  border: 0;
+  padding: 0;
+}
+
+#report_select {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.simple-select {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#login_form {
+  background: #eee;
+  border: solid 5px #666;
+  padding: 20px;
+  width: 350px;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+label.checkbox {
+  font-weight: normal;
+}
+
+.fieldWithErrors {
+  border: solid 2px red;
+}
+
+#errorExplanation {
+  border: 2px solid red;
+  padding: 7px;
+  margin-bottom: 10px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+}
+
+#errorExplanation ul li {
+  list-style: square;
+}
+
+#notice {
+  background: #eee;
+  border: solid 1px #0B53C1;
+  padding: 5px 15px;
+  margin: 10px 0px;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
