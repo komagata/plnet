@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-RAILS_ENV ||= "production"
-require File.dirname(__FILE__) + '/../config/boot'
-require RAILS_ROOT + '/config/environment'
-
-con = ActiveRecord::Base.connection
-con.tables.each do |table|
-  con.execute "OPTIMIZE TABLE #{table}"
-end
