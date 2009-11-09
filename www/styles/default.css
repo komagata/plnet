@@ -1,0 +1,444 @@
+@charset "utf-8";
+/*
+ * Style Name: default Stylesheet
+ * Style URI: http://purpr.in/common/stylesheets/default.css
+ * Description: 各種UAのデフォルトスタイルをリセットして上書きする
+ * ----------------------------------------
+ * Universal selecter
+ * ---------------------------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  background-color: transparent;
+  font: normal normal normal 100%/1.5 "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", HiraKakuPro-W3, Osaka, sans-serif; 
+  }
+
+html * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    }
+
+/* Inline elements */
+span, em, strong, dfn, code, q, sub, sup, samp, kbd, var, cite, abbr, acronym {
+    display: inline;
+  }
+
+/* Block elements */
+h1, h2, h3, h4, h5, h6, dl, ul, ol, pre, blockquote, address, p, div, fieldset, table, form {
+    display: block; 
+  }
+
+/* ----------------------------------------
+ * modules
+ * ---------------------------------------- */
+
+/* Structure module */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  line-height: 1.5;
+  color: #000;
+  background-color: #fff;
+  font-size: 90%;
+  }
+
+/* Text module */
+abbr,acronym {
+  font-family: monospace;
+  }
+
+address {
+  
+  }
+
+blockquote {
+  margin: 0.9em 0 0.9em 24px;
+  padding: 1px;
+  border-top: 1px solid #b9c3c8;
+  border-left: 1px solid #b9c3c8;
+  background-color: #eaeeef;
+  }
+
+blockquote * {
+  color: #434755;
+  }
+
+blockquote[title]:before {
+  margin: 2px;
+  padding: 0.1em 16px;
+  display: block;
+  content: attr(title);
+  color: #455c5d;
+  background-color: #e0e4e5;
+  font-size: 80%;
+  }
+
+blockquote[cite]:after {
+  margin: 0;
+  padding: 0.1em 16px;
+  display: block;
+  content: attr(cite);
+  color: #333333;
+  background-color: #e0e4e5;
+  font-size: 80%;
+  text-align: right;
+  }
+
+br {
+
+  }
+
+cite {
+  display: block;
+  color: #333333;
+  font-style: normal;
+  text-align: right;
+  }
+
+code {
+  font-family: "Andale Mono", "Courier New", Courier, "Osaka－等幅" , monospace;
+  }
+
+dfn {
+  
+  }
+
+em {
+  border-bottom: 1px solid #000;
+  font-style: normal;
+  font-weight: normal;
+  }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.4em 0;
+  padding: 0.2em 0.5em; /* better with border-line */
+  padding: 0.2em 0;
+  border: 1px solid #666; /* border-line sample */
+  border: none; /* no border-line */
+  clear: both;
+  line-height: 1.2;
+  font-weight: normal;
+  }
+
+h1 {
+  font-size: 170%;
+  }
+
+h2 {
+  font-size: 130%;
+  }
+
+h3 {
+  font-size: 110%;
+  }
+
+h4 {
+  font-size: 100%;
+  }
+
+h5 {
+  font-size: 95%;
+  }
+
+h6 {
+  font-size: 90%;
+  }
+
+kbd {
+  padding: 0.1em 0.5em;
+  border-top: 3px solid #ccc;
+  border-right: 3px solid #666;
+  border-bottom: 3px solid #666;
+  border-left: 3px solid #ccc;
+  background-color: #eee;
+  font-family: "Andale Mono", "Osaka－等幅", monospace;
+  text-transform: uppercase;
+  }
+
+kbd.accesskey {
+  padding: 0 0.2em;
+  }
+
+p {
+  margin: 0 0 0.8em 0;
+  }
+
+pre {
+  margin: 0 0 1em 0;
+  padding: 8px 10px;
+  border: 1px solid #cccccc;
+  width: auto;
+  _width: 98%; /* for IE */
+  line-height: 1.1;
+  overflow: visible; /* for Mac IE */
+  /*\*/
+  overflow: auto;
+  /* */
+  color: #3d4263;
+  background-color: #f5f5f5;
+  font: normal normal normal 90%/1.3 "Andale Mono", "Osaka－等幅", monospace !important;
+  letter-spacing: 1px;
+  }
+
+pre[title]:before {
+  margin-bottom: 0.8em;
+  display: block;
+  content: attr(title);
+  }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  font: normal normal normal 100%/1.3 "Andale Mono", "Osaka－等幅", monospace !important;
+}
+
+q {
+
+  }
+
+samp {
+
+  }
+
+strong {
+  border-bottom: 1px solid #000;
+  font-weight: bold;
+  }
+
+var {
+
+  }
+
+/* Hypertext module */
+a {
+  text-decoration: underline;
+  }
+
+a:link {
+  color: #06c;
+  }
+
+a:visited {
+  color: #485270;
+  }
+
+a:hover {
+  color: #b83800;
+  }
+
+a:active {
+  color: #06c;
+  }
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  font-weight: bold;
+  }
+
+/* List module */
+dl {margin: 0 0 1em 0;}
+dt {}
+dd {}
+ul,
+ol {margin: 0 0 0.9em 0;}
+dd>ul, 
+dd>ol {margin: 0;}
+ul li,
+ol li {margin-left: 1.5em;}
+li li,
+li p,
+li pre,
+li dt,
+li dd,
+dd li,
+dd p,
+dd pre,
+dd dt,
+dd dd {font-size:100%;}
+li ul,
+li ol,
+li dl,
+li p,
+dd ul,
+dd ol,
+dd dl,
+dd p {margin: 0.4em 8px;}
+
+/* Edit module */
+del {
+  color: #666;
+  text-decoration: line-through;
+  }
+
+del[datetime]:before{
+  content: " ( "attr(datetime)"delete) ";
+  }
+
+ins{
+  border-bottom: 1px dotted #666;
+  }
+
+ins[datetime]:before{
+  content: " ( "attr(datetime)"insert) ";
+  }
+
+/* Forms module */
+form {
+  margin: 0;
+  padding: 0;
+  clear: both;
+  background-color: transparent;
+  }
+
+form dl,
+form p {
+  margin: 0;
+  padding: 0;
+  }
+
+form p {
+  margin: 0 0 0.3em 0;
+  padding: 0;
+  }
+
+form dl dt {
+  margin: 0 0 0.3em 0;
+  }
+
+form dl dd {
+  margin: 0 0 0.5em 0;
+  }
+
+fieldset {
+  border: none;
+  }
+
+input,
+textarea {
+  margin: 0 0 0.3em 0;
+  padding: 0.1em 5px;
+  border: 1px solid #a8a8a8;
+  vertical-align: middle;
+  color: #333;
+  background-color: #fff;
+  font-family:  "Lucida Grande", "Lucida Sans Unicode", Arial, "ヒラギノ角ゴ Pro W3", Osaka, sans-serif;
+  }
+
+input:hover,
+textarea:hover {
+  border-top: 1px solid #333;
+  border-left: 1px solid #333;
+  }
+
+input:focus,
+textarea:focus {
+  border-top: 1px solid #333;
+  border-left: 1px solid #333;
+  }
+
+legend {
+  display: none;
+  font-size: 85%;
+  background-color: #e8e8e8;
+  padding: 0.1em 8px;
+  }
+
+textarea {
+  padding: 0.4em 8px;
+  }
+
+input.radio {
+  border: none;
+  background-color: transparent;
+  }
+
+input.submit {
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #6c737a;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #c2c2c2 #8f8f8f #8f8f8f #c2c2c2;
+  padding: 1px 0.5em;
+  }
+
+input.submit:hover {
+  color: #000;
+  }
+
+select {
+  background-color: #fff;
+  }
+
+optgroup {
+  padding: 0.1em 0;
+  background-color: #f2f2f2;
+  font-weight: bold;
+  }
+
+option {
+  padding: 0.1em 5px;
+  background-color: #fff;
+  }
+
+optgroup option {
+  padding-left: 1em;
+  }
+
+/* Tables module */
+table {
+  margin: 0.5em 0;
+  border-width: 1px;
+  }
+
+caption {
+  font-size: 80%;
+  width: auto;
+  }
+
+td,
+th {
+  font-size: 80%;
+  line-height: 1.2;
+  padding : 0.1em 8px;
+  width: auto;
+  }
+
+td {
+  border-width: 1px;
+  }
+
+th {
+  border-width: 0 1px 1px 0;
+  font-weight: normal;
+  }
+
+/* Image module */
+img {
+  vertical-align: bottom;
+  }
+
+a img {
+  border: none;
+  text-decoration: none;
+  }
+
+/* Object module */
+object,
+embed {
+  margin: 0.3em 0 1em 0;
+  }
+

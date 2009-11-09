@@ -1,0 +1,24 @@
+.plnet_frame {
+  font-size: 10px;
+  padding: 6px;
+}
+
+.plnet_frame .plnet_header {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.plnet_frame .plnet_body ul {
+  margin: 0;
+  padding: 0;
+}
+
+.plnet_frame .plnet_body ul li {
+  margin: 3px 3px 3px 15px;
+  list-style-type: square;
+}
+
+.plnet_frame .plnet_footer {
+  text-align: right;
+}

@@ -1,0 +1,141 @@
+<script type="text/javascript">{literal}
+window.onload = function() {
+  document.getElementById('resign').onclick = function() {
+    dialog = new Plnet.Dialog
+    dialog.confirm(msg('do you resign really'), {
+      onOk:function() {
+        location.href = '/setting/user/resign?key={/literal}{$key}{literal}'
+      },
+      width: 400
+    })
+  }
+}
+{/literal}</script>
+<div class="block">
+  <h2>{'profile'|msg}</h2>
+{if $request->hasParameter('changed')}
+  <div id="changed"><img src="images/message.gif" class="icon" />{'update your profile'|msg}</div>
+{/if}
+{if $request->hasErrors()}
+  <fieldset class="error">
+    <label class="error">{'error occurred on the following items'|msg}</label>
+    <div class="error">{mojavi_error name="password"}</div>
+    <div class="error">{mojavi_error name="password-verify"}</div>
+    <div class="error">{mojavi_error name="email"}</div>
+  </fieldset>
+{/if}
+
+  <form action="/setting/user" method="post" enctype="multipart/form-data">
+  <p>
+    <label>{'name'|msg}</label><br />
+{if $locale === 'ja'}
+    <input name="familyname" id="familyname" class="input short" value="{$member->familyname}" />
+    <input name="firstname" id="firstname" class="input short" value="{$member->firstname}" />
+{else}
+    <input name="firstname" id="firstname" class="input short" value="{$member->firstname}" />
+    <input name="familyname" id="familyname" class="input short" value="{$member->familyname}" />
+{/if}
+  </p>
+
+  <p>
+    <label>{'nickname'|msg}</label><br />
+    <input name="nickname" id="nickname" class="input long" value="{$member->nickname}" />
+  </p>
+
+  <p>
+    <label>{'profile photo'|msg}</label><br />
+{if $member->photo_url}
+  </p>
+  <img src="{$member->photo_url}" width="45" height="45" />
+  <p>
+  </p>
+    <label>
+      <input type="checkbox" name="remove_photo" id="remove_photo" value="1" />
+      {'remove'|msg}
+    </label>
+  <p>
+{/if}
+    <input type="hidden" name="MAX_FILE_SIZE" value="300000" />
+    <input type="file" name="photo" id="photo" class="input long" />
+  </p>
+
+  <p>
+    <label>{'gender'|msg}</label><br />
+    <select name="gender" id="gender" class="input">
+      {html_options options=$genders selected=$member->gender}
+    </select>
+  </p>
+
+  <p>
+    <label>{'homepage url'|msg}</label><br />
+    <input name="homepage" id="homepage" class="input long" value="{$member->homepage}" />
+  </p>
+
+  <p>
+    <label>{'birth date'|msg}</label><br />
+    {html_select_date_simple time=`$member->birthdate` prefix="birthdate" locale=$locale}
+  </p>
+  <p>
+    <label>{'new password'|msg}</label><br />
+    <input id="password" class="input long" {if $request->hasError('password')} class="error" {/if} type="password" name="password" value="" />
+  </p>
+
+  <p>
+    <label>{'new password confirm'|msg}</label><br />
+    <input id="password_verify" class="input long" {if $request->hasError('password-verify')} class="error" {/if} type="password" id="password-verify" name="password-verify" value="" />
+  </p>
+
+  <p>
+    <label>{'email'|msg}</label><br />
+    <input id="email" class="input long" {if $request->hasError('email')} class="error" {/if} type="text" name="email" value="{$member->email}" />
+  </p>
+
+  <p>
+    <label>{'aim id'|msg}</label><br />
+    <input name="aim" id="aim" class="input long" value="{$member->aim}" />
+  </p>
+
+  <p>
+    <label>{'yahoo id'|msg}</label><br />
+    <input name="yahoo" id="yahoo" class="input long" value="{$member->yahoo}" />
+  </p>
+
+  <p>
+    <label>{'skype id'|msg}</label><br />
+    <input name="skype" id="skype" class="input long" value="{$member->skype}" />
+  </p>
+
+  <p>
+    <label>{'msn id'|msg}</label><br />
+    <input name="msn" id="msn" class="input long" value="{$member->msn}" />
+  </p>
+
+  <p>
+    <label>{'google talk id'|msg}</label><br />
+    <input name="googletalk" id="googletalk" class="input long" value="{$member->googletalk}" />
+  </p>
+
+  <p>
+    <label>{'language'|msg}</label><br />
+    <select name="language" id="language" class="input">
+      {html_options options=$languages selected=$member->language}
+    </select>
+  </p>
+
+  <p>
+    <label>{'self introduction'|msg}</label><br />
+    <textarea name="self_introduction" id="self_introduction" class="input introduction">{$member->self_introduction}</textarea>
+  </p>
+
+  <p>
+    <input type="hidden" name="id" value="{$member->id}" />
+    <input type="submit" name="submit" id="submit" class="submit button" value="{'update'|msg}" />
+  </p>
+  </form>
+</div>
+
+<div class="block">
+  <h2>{'resign'|msg}</h2>
+  <p>{'resign explanation'|msg}</p>
+  <input type="button" id="resign" class="submit button" value="{'resign'|msg}" />
+</div>

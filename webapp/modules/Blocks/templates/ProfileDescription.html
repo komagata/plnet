@@ -1,0 +1,81 @@
+<div id="profile">
+  <h3>{'profile'|msg}</h3>
+
+  <div id="name" class="element">
+    <h4 class="label">{'name'|msg}</h4>
+    <div class="value">
+{if $locale === 'ja'}
+      <span>{$member->familyname}</span>
+      <span>{$member->firstname}&nbsp;</span>
+{else}
+      <span>{$member->firstname}</span>
+      <span>{$member->familyname}&nbsp;</span>
+{/if}
+    </div>
+  </div>
+
+  <div class="element nickname">
+    <h4 class="label">{'nickname'|msg}</h4>
+    <div class="value">{$member->nickname}&nbsp;</div>
+  </div>
+
+  <div class="element photo">
+    <h4 class="label">{'profile photo'|msg}</h4>
+    <div class="value"><img src="{$member->photo_url}" /></div>
+  </div>
+
+  <div id="gender" class="element">
+    <h4 class="label">{'gender'|msg}</h4>
+    <div class="value">{$member->gender_text}&nbsp;</div>
+  </div>
+
+  <div id="birthdate" class="element">
+    <h4 class="label">{'birth date'|msg}</h4>
+    <div class="value">{$member->birthdate}&nbsp;</div>
+  </div>
+
+  <div id="homepage" class="element">
+    <h4 class="label">{'homepage url'|msg}</h4>
+    <div class="value">{$member->homepage}&nbsp;</div>
+  </div>
+
+  <div id="aim" class="element">
+    <h4 class="label">{'aim id'|msg}</h4>
+    <div class="value">{$member->aim}&nbsp;</div>
+  </div>
+
+  <div id="yahoo" class="element">
+    <h4 class="label">{'yahoo id'|msg}</h4>
+    <div class="value">{$member->yahoo}&nbsp;</div>
+  </div>
+
+  <div id="skype" class="element">
+    <h4 class="label">{'skype id'|msg}</h4>
+    <div class="value">{$member->skype}&nbsp;</div>
+  </div>
+
+  <div id="msn" class="element">
+    <h4 class="label">{'msn id'|msg}</h4>
+    <div class="value">{$member->msn}&nbsp;</div>
+  </div>
+
+  <div id="google" class="element">
+    <h4 class="label">{'google talk id'|msg}&nbsp;</h4>
+    <div class="value">{$member->googletalk}&nbsp;</div>
+  </div>
+
+  <div id="language" class="element">
+    <h4 class="label">{'language'|msg}</h4>
+    <div class="value">{$member->language_text}&nbsp;</div>
+  </div>
+
+  <div id="self_introduction" class="element">
+    <h4 class="label">{'self introduction'|msg}</h4>
+    <div class="value">{$member->self_introduction|nl2br}&nbsp;</div>
+  </div>
+
+  <div id="foaf" class="element">
+    <a href="{$SCRIPT_PATH}{$member->account}/foaf.rdf"><img src="/images/foaf_icon.gif" class="icon" /></a>
+    <a href="http://xantus.org/foaf/?foaf={$SCRIPT_PATH}{$member->account}/foaf.rdf"><img src="/images/graf.gif" class="icon" /></a>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+/*
+body {
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;
+  font:x-small/1.5em "Trebuchet MS",Verdana,Arial,Sans-serif;
+}
+
+pre {
+  overflow: auto;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 6px;
+  background: #fff;
+  width: 95%;
+}
+
+blockquote {
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+#header {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#header h1 {
+  font-size: 72px;
+  margin: 44px;
+  padding: 0;
+}
+
+#description {
+  font-size: 14px;
+}
+
+#container {
+  width: 740px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#content {
+  margin-top: 20px;
+  position: relative;
+}
+
+#alpha {
+  width: 520px;
+  line-height: 1.5em;
+  margin-right: 20px;
+}
+
+#result {
+  padding: 12px;
+}
+
+#beta {
+  margin: 0; padding: 0;
+  width: 200px;
+  position: absolute;
+  top: 0; right: 0;
+}
+
+#beta ul {
+  margin: 0;
+  padding: 0;
+}
+
+#beta li {
+  margin: 0;
+  list-style-type: none;
+}
+
+#footer {
+  text-align: center;
+  margin: 1em;
+}
+
+#entries {
+  padding: 0 1em;
+}
+
+#entries_title {
+  margin: 1em 0 1em 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.side_block {
+  padding: 0 1em 1em 1em;
+  font-size: 14px;
+}
+
+.entry {
+  margin: 0 0 3em 0;
+}
+
+.entry_footer {
+  text-align: right;
+}
+
+.entry_author {
+  display: inline;
+}
+
+.entry_date {
+  display: inline;
+}
+
+.entry_source {
+  text-align: right;
+}
+
+.amazon {
+  text-align: center;
+}
+*/

@@ -1,0 +1,30 @@
+      <h2>{$title}</h2>
+      <div class="pager">{$pager->slider}</div>
+
+      <table id="user_list">
+{foreach name=member from=$pager->getPageData() item=member}
+        <tr>
+          <td class="user_list_profile_icon">
+            <a href="{$member.account}/profile">
+              <img src="{$member.profile_icon}" class="icon" />
+            </a>
+          </td>
+          <td class="user_list_profile">
+	    <h3><a href="{$member.account}/profile">{$member.account}</a></h3>
+	    {$member.self_introduction|nl2br}
+	  </td>
+          <td class="user_list_icon">
+  {if count($member.feeds) > 0}
+    {foreach from=$member.feeds item=feed name=feed}
+            <a href="{$SCRIPT_PATH}{$member.account}/source/{$feed.id}">
+            <img height="16" width="16" src="{$feed.favicon|tofavicon}" class="icon" /></a>
+    {/foreach}
+  {else}
+            (no service)
+  {/if}
+          </td>
+        </tr>
+{/foreach}
+      </table>
+
+      <div class="pager">{$pager->slider}</div>

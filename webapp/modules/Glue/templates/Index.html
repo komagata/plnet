@@ -1,0 +1,132 @@
+{literal}<?xml version="1.0" encoding="utf-8"?>{/literal}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<base href="{$SCRIPT_PATH}" target="_self" />
+<link rel="shortcut icon" href="{$SCRIPT_PATH}favicon.ico" />
+{if $design->id == $PLNET_CUSTOM_TEMPLATE_ID}
+<link rel="stylesheet" href="styles/{$member->account}/{$design->file}" type="text/css" />
+{else}
+<link rel="stylesheet" href="styles/{$design->file}" type="text/css" />
+{/if}
+{if $site->show_profile}
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="{$SCRIPT_PATH}{$member->account}/foaf.rdf" />
+{/if}
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="{$SCRIPT_PATH}{$member->account}/rss" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{$SCRIPT_PATH}{$member->account}/rss2" />
+{if $source_id}
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0 Source: {$feed_title}" href="{$SCRIPT_PATH}{$member->account}/source/{$source_id}/rss" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Source: {$feed_title}" href="{$SCRIPT_PATH}{$member->account}/source/{$source_id}/rss2" />
+{/if}
+{if $tag}
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0 Tag: {$tag}" href="{$SCRIPT_PATH}{$member->account}/tag/{$tag}/rss" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Tag: {$tag}" href="{$SCRIPT_PATH}{$member->account}/tag/{$tag}/rss2" />
+{/if}
+<title>{$site->title}</title>
+</head>
+
+<body>
+{include file="$shared_dir/analytics.html"}
+<div id="container">
+  <div id="header">
+    <h1><a href="{$member->account}/">{$site->title|escape}</a></h1>
+    <h2 id="description">{$site->description|escape|nl2br}</h2>
+  </div>
+
+  <div id="content">
+    <div id="alpha">
+      <div id="entries">
+{if $display == 'profile'}
+{mojavi_action module=Blocks action=ProfileDescription lifetime=300 cache_id=$params.account}
+{elseif $display == 'friends'}
+{mojavi_action module=Blocks action=FriendsDescription lifetime=300 cache_id=$params.account}
+{elseif $entry_id}
+{mojavi_action module=Blocks action=Entry lifetime=86400 cache_id=$REQUEST_URI}
+{else}
+{mojavi_action module=Blocks action=Entries lifetime=3600 cache_id=$REQUEST_URI}
+{/if}
+      </div>
+    </div>
+
+    <div id="beta">
+
+{if $site->show_profile and $display != 'profile'}
+      <div id="profile" class="block">{mojavi_action module=Blocks action=Profile lifetime=300 cache_id=$params.account}</div>
+{/if}
+      <div id="friends" class="block">{mojavi_action module=Blocks action=Friends lifetime=300 cache_id=$params.account}</div>
+
+{if $site->show_footprint}
+      <div id="footprints" class="block">{mojavi_action module=Blocks action=Footprints}</div>
+{/if}
+
+      <div id="categories" class="block">{mojavi_action module=Blocks action=Categories lifetime=86400 cache_id=$params.account}</div>
+
+      <div id="archives" class="block">{mojavi_action module=Blocks action=Archives lifetime=86400 cache_id=$params.account}</div>
+
+      <div id="tags" class="block">{mojavi_action module=Blocks action=Tags lifetime=86400 cache_id=$params.account}</div>
+
+      <div id="sources" class="block">{mojavi_action module=Blocks action=Sources lifetime=86400 cache_id=$params.account}</div>
+
+      <div id="search" class="block">
+        <form action="/{$params.account}/" method="get">
+        <h3>{'search'|msg}</h3>
+        <div id="search_box">
+          <img src="images/search.gif" />
+          <input type="text" name="q" id="search_input" value="" />
+        </div>
+        </form> 
+      </div>
+
+      <div id="syndicate" class="block">
+        <h3>{'syndicate'|msg}</h3>
+        <ul>
+          <li><a href="{$member->account}/rss" title="RSS 1.0">
+            <img src="images/feed_icon.gif" class="favicon" />RSS 1.0
+          </a></li>
+          <li><a href="{$member->account}/rss2" title="RSS 2.0">
+            <img src="images/feed_icon.gif" class="favicon" />RSS 2.0
+          </a></li>
+{if $source_id}
+          <li><a href="{$member->account}/source/{$source_id}/rss" title="RSS 1.0 Source: {$feed_title}">
+            <img src="images/feed_icon.gif" class="favicon" />RSS 1.0 Source: {$feed_title}
+          </a></li>
+          <li><a href="{$member->account}/source/{$source_id}/rss2" title="RSS 2.0 Source: {$feed_title}">
+            <img src="images/feed_icon.gif" class="favicon" />RSS 2.0 Source: {$feed_title}
+          </a></li>
+{/if}
+{if $tag}
+          <li><a href="{$member->account}/tag/{$tag}/rss" title="RSS 1.0 Tag: {$tag}">
+            <img src="images/feed_icon.gif" class="favicon" />RSS 1.0 Tag: {$tag}
+          </a></li>
+          <li><a href="{$member->account}/tag/{$tag}/rss2" title="RSS 2.0 Tag: {$tag}">
+            <img src="images/feed_icon.gif" class="favicon" />RSS 2.0 Tag: {$tag}
+          </a></li>
+{/if}
+          <li><a href="{$member->account}/opml" title="OPML 1.1">
+            <img src="images/opml_icon.gif" class="favicon" />OPML 1.1
+          </a></li>
+
+{if $site->show_profile}
+          <li><a href="{$SCRIPT_PATH}{$member->account}/foaf.rdf" title="FOAF 0.1">
+            <img src="images/foaf_icon.gif" class="icon" />FOAF 0.1 
+          </a></li>
+{/if}
+        </ul>
+      </div>
+
+{include file="$shared_dir/poweredby.html"}
+    </div>
+  </div>
+{if $member->id <= 25}
+{include file="$shared_dir/sougi.html"}
+{elseif $member->id <= 50}
+{include file="$shared_dir/umuze.html"}
+{/if}
+{include file="$shared_dir/footer.html"}
+</div>
+</body>
+</html>

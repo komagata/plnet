@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet href="http://www.blogger.com/styles/atom.css" type="text/css"?>
+
+<feed xmlns="http://purl.org/atom/ns#" version="0.3" xml:lang="en-US">
+<link href="https://www.blogger.com/atom/31399670" rel="service.post" title="Plnet ChangeLog" type="application/atom+xml"/>
+<link href="https://www.blogger.com/atom/31399670" rel="service.feed" title="Plnet ChangeLog" type="application/atom+xml"/>
+<title mode="escaped" type="text/html">Plnet ChangeLog</title>
+<tagline mode="escaped" type="text/html">Plnet開発日誌</tagline>
+<link href="http://komagata.blogspot.com" rel="alternate" title="Plnet ChangeLog" type="text/html"/>
+<id>tag:blogger.com,1999:blog-31399670</id>
+<modified>2006-10-01T19:54:28Z</modified>
+<generator url="http://www.blogger.com/" version="6.72">Blogger</generator>
+<info mode="xml" type="text/html">
+<div xmlns="http://www.w3.org/1999/xhtml">This is an Atom formatted XML site feed. It is intended to be viewed in a Newsreader or syndicated to another site. Please visit the <a href="http://help.blogger.com/bin/answer.py?answer=697">Blogger Help</a> for more info.</div>
+</info>
+<convertLineBreaks xmlns="http://www.blogger.com/atom/ns#">true</convertLineBreaks>
+<entry xmlns="http://purl.org/atom/ns#">
+<link href="https://www.blogger.com/atom/31399670/115973241289014034" rel="service.edit" title="新サーバへ移行（速くなった）" type="application/atom+xml"/>
+<author>
+<name>komagata</name>
+</author>
+<issued>2006-10-01T12:41:00-07:00</issued>
+<modified>2006-10-01T19:53:32Z</modified>
+<created>2006-10-01T19:53:32Z</created>
+<link href="http://komagata.blogspot.com/2006/10/blog-post_115973241289014034.html" rel="alternate" title="新サーバへ移行（速くなった）" type="text/html"/>
+<id>tag:blogger.com,1999:blog-31399670.post-115973241289014034</id>
+<title mode="escaped" type="text/html">新サーバへ移行（速くなった）</title>
+<content type="application/xhtml+xml" xml:base="http://komagata.blogspot.com" xml:space="preserve">
+<div xmlns="http://www.w3.org/1999/xhtml">新サーバへ移行しました。<br/>
+<br/>月500円の共有レンタルサーバから専用サーバに移行したので大分速くなりました。（パックマン見るのがほぼ無理に）<br/>
+<br/>今まで過負荷でエラーばかりでご迷惑おかけしました。（人によってはDNS浸透に2～3日かかるかもしれません）<br/>
+<br/>データが一部おかしいところについては次回修正に向けて激しく作業中です。<br/>
+<br/>過負荷で困っていた僕らに快くサーバを提供してくださった<a href="http://www.actindi.com/">株式会社アクトインディ</a>の下元さんには深く感謝しております。</div>
+</content>
+<draft xmlns="http://purl.org/atom-blog/ns#">false</draft>
+</entry>
+<entry xmlns="http://purl.org/atom/ns#">
+<link href="https://www.blogger.com/atom/31399670/115840440930592256" rel="service.edit" title="デベロッパー向けページ" type="application/atom+xml"/>
+<author>
+<name>komagata</name>
+</author>
+<issued>2006-09-16T03:58:00-07:00</issued>
+<modified>2006-09-16T11:00:09Z</modified>
+<created>2006-09-16T11:00:09Z</created>
+<link href="http://komagata.blogspot.com/2006/09/blog-post_16.html" rel="alternate" title="デベロッパー向けページ" type="text/html"/>
+<id>tag:blogger.com,1999:blog-31399670.post-115840440930592256</id>
+<title mode="escaped" type="text/html">デベロッパー向けページ</title>
+<content type="application/xhtml+xml" xml:base="http://komagata.blogspot.com" xml:space="preserve">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<a href="http://plnet.jp/list/rss2">新しいPlnetのRSS</a>と<a href="http://plnet.jp/developer">デベロッパー向けページ</a>を追加しました。<br/>
+<br/>API等は随時追加していく予定です。</div>
+</content>
+<draft xmlns="http://purl.org/atom-blog/ns#">false</draft>
+</entry>
+<entry xmlns="http://purl.org/atom/ns#">
+<link href="https://www.blogger.com/atom/31399670/115808216990709250" rel="service.edit" title="plnet一覧変更" type="application/atom+xml"/>
+<author>
+<name>komagata</name>
+</author>
+<issued>2006-09-12T10:28:00-07:00</issued>
+<modified>2006-09-12T17:29:29Z</modified>
+<created>2006-09-12T17:29:29Z</created>
+<link href="http://komagata.blogspot.com/2006/09/plnet.html" rel="alternate" title="plnet一覧変更" type="text/html"/>
+<id>tag:blogger.com,1999:blog-31399670.post-115808216990709250</id>
+<title mode="escaped" type="text/html">plnet一覧変更</title>
+<content type="application/xhtml+xml" xml:base="http://komagata.blogspot.com" xml:space="preserve">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<a href="http://plnet.jp/list/">plnet一覧</a>の見た目を変えました。<br/>
+<br/>
+<a href="http://www.flickr.com/photos/komagata/241653960/" title="Photo Sharing">
+<img alt="plnet_list_hard" height="125" src="http://static.flickr.com/87/241653960_d4fef63eaa_m.jpg" width="240"/>
+</a>
+<br/>
+<br/>これスゴス</div>
+</content>
+<draft xmlns="http://purl.org/atom-blog/ns#">false</draft>
+</entry>
+<entry xmlns="http://purl.org/atom/ns#">
+<link href="https://www.blogger.com/atom/31399670/115801965368245720" rel="service.edit" title="対応サービス一覧" type="application/atom+xml"/>
+<author>
+<name>komagata</name>
+</author>
+<issued>2006-09-11T17:03:00-07:00</issued>
+<modified>2006-09-12T00:09:58Z</modified>
+<created>2006-09-12T00:07:33Z</created>
+<link href="http://komagata.blogspot.com/2006/09/blog-post_11.html" rel="alternate" title="対応サービス一覧" type="text/html"/>
+<id>tag:blogger.com,1999:blog-31399670.post-115801965368245720</id>
+<title mode="escaped" type="text/html">対応サービス一覧</title>
+<content type="application/xhtml+xml" xml:base="http://komagata.blogspot.com" xml:space="preserve">
+<div xmlns="http://www.w3.org/1999/xhtml">
+<a href="http://www.flickr.com/photos/komagata/241020666/" title="Photo Sharing">
+<img alt="service_list" height="146" src="http://static.flickr.com/82/241020666_cc78318636_o.png" width="407"/>
+</a>
+<br/>
+<br/>トップページへ対応サービス一覧へのリンクを追加しました。<br/>
+<br/>対応してほしいサービスがありましたら教えてください。</div>
+</content>
+<draft xmlns="http://purl.org/atom-blog/ns#">false</draft>
+</entry>
+<entry xmlns="http://purl.org/atom/ns#">
+<link href="https://www.blogger.com/atom/31399670/115776070126224654" rel="service.edit" title="二重データ修正" type="application/atom+xml"/>
+<author>
+<name>komagata</name>
+</author>
+<issued>2006-09-08T17:00:00-07:00</issued>
+<modified>2006-09-09T00:11:41Z</modified>
+<created>2006-09-09T00:11:41Z</created>
+<link href="http://komagata.blogspot.com/2006/09/blog-post_08.html" rel="alternate" title="二重データ修正" type="text/html"/>
+<id>tag:blogger.com,1999:blog-31399670.post-115776070126224654</id>
+<title mode="escaped" type="text/html">二重データ修正</title>
+<content type="application/xhtml+xml" xml:base="http://komagata.blogspot.com" xml:space="preserve">
+<div xmlns="http://www.w3.org/1999/xhtml">・二重に登録されてるデータがある。<br/>
+<br/>を修正しました。<br/>それとバレないように手動でクローラ一回動かしました。<br/>cronでの実行はサーバ来るまで我慢します…。</div>
+</content>
+<draft xmlns="http://purl.org/atom-blog/ns#">false</draft>
+</entry>
+<entry xmlns="http://purl.org/atom/ns#">
+<link href="https://www.blogger.com/atom/31399670/115755622019114438" rel="service.edit" title="サーバ過負荷について" type="application/atom+xml"/>
+<author>
+<name>komagata</name>
+</author>
+<issued>2006-09-06T08:20:00-07:00</issued>
+<modified>2006-09-06T15:23:40Z</modified>
+<created>2006-09-06T15:23:40Z</created>
+<link href="http://komagata.blogspot.com/2006/09/blog-post_06.html" rel="alternate" title="サーバ過負荷について" type="text/html"/>
+<id>tag:blogger.com,1999:blog-31399670.post-115755622019114438</id>
+<title mode="escaped" type="text/html">サーバ過負荷について</title>
+<content type="application/xhtml+xml" xml:base="http://komagata.blogspot.com" xml:space="preserve">
+<div xmlns="http://www.w3.org/1999/xhtml">レンタルサーバ側から連絡があり、現在記事の更新を停止しています。<br/>（新しい記事が反映されないだけで機能的に使えない部分はありません。）<br/>
+<br/>つい先日、記事が更新されない不具合を直したばかりなのですが、不具合修正　＝　ちゃんと全ての処理が走るようになった　→　過負荷　ということのようです。<br/>
+<br/>丁度、新しい専用サーバを提供してくださるという話をいただいたところなので準備が整い次第、移行する予定です。</div>
+</content>
+<draft xmlns="http://purl.org/atom-blog/ns#">false</draft>
+</entry>
+<entry xmlns="http://purl.org/atom/ns#">
+<link href="https://www.blogger.com/atom/31399670/115738863395835981" rel="service.edit" title="データが更新されない件修正" type="application/atom+xml"/>
+<author>
+<name>komagata</name>
+</author>
+<issued>2006-09-04T09:44:00-07:00</issued>
+<modified>2006-09-04T16:50:34Z</modified>
+<created>2006-09-04T16:50:33Z</created>
+<link href="http://komagata.blogspot.com/2006/09/blog-post_04.html" rel="alternate" title="データが更新されない件修正" type="text/html"/>
+<id>tag:blogger.com,1999:blog-31399670.post-115738863395835981</id>
+<title mode="escaped" type="text/html">データが更新されない件修正</title>
+<content type="application/xhtml+xml" xml:base="http://komagata.blogspot.com" xml:space="preserve">
+<div xmlns="http://www.w3.org/1999/xhtml">・bangbangshootさんのデータが更新されない<br/>
+<br/>やっと直った。うれし<br/>
+<br/>他にも色々な方のデータが更新されてませんでした。原因はクローラーのメモリーリークなんですが、ようやく直りました・・・。御迷惑お掛けしました。</div>
+</content>
+<draft xmlns="http://purl.org/atom-blog/ns#">false</draft>
+</entry>
+</feed>

@@ -1,0 +1,49 @@
+  <div id="menu">
+    <ul>
+      <li class="{if $request_sig == 'MyContent_Index'}current{else}hide{/if}">
+{if $request_sig == 'MyContent_Index'}
+        {'feed'|msg}
+{else}
+        <a href="setting/feed">{'feed'|msg}</a>
+{/if}
+      </li>
+      <li class="{if $request_sig == 'Friend_Index'}current{else}hide{/if}">
+{if $request_sig == 'Friend_Index'}
+        {'friends'|msg}
+{else}
+        <a href="setting/friend">{'friends'|msg}</a>
+{/if}
+      </li>
+      <li class="{if $request_sig == 'Site_Update'}current{else}hide{/if}">
+{if $request_sig == 'Site_Update'}
+        {'site'|msg}
+{else}
+        <a href="setting/site">{'site'|msg}</a>
+{/if}
+      </li>
+      <li class="{if $request_sig == 'Design_Update'}current{else}hide{/if}">
+{if $request_sig == 'Design_Update'}
+        {'design'|msg}
+{else}
+        <a href="setting/design">{'design'|msg}</a>
+{/if}
+      </li>
+      <li class="{if $request_sig == 'Member_Update'}current{else}hide{/if}">
+{if $request_sig == 'Member_Update'}
+        {'profile'|msg}
+{else}
+        <a href="setting/user">{'profile'|msg}</a>
+{/if}
+      </li>
+      <li class="{if $request_sig == 'Footprint_List'}current{else}hide{/if}">
+{if $request_sig == 'Footprint_List'}
+        {'footprint'|msg}
+{else}
+        <a href="setting/footprint">{'footprint'|msg}</a>
+{/if}
+      </li>
+      <li class="hide">
+        <a href="{$member->account}/">{'preview my site'|msg}</a>
+      </li>
+    </ul>
+  </div>

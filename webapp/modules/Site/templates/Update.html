@@ -1,0 +1,61 @@
+<h2>{'site'|msg}</h2>
+{if $request->hasParameter('changed')}
+<div id="changed"><img src="images/message.gif" class="icon" />{'update your site'|msg}</div>
+{/if}
+{if $request->hasErrors()}
+<div id="message">
+  <fieldset class="error">
+  <label class="error">{'error occurred on the following items'|msg}</label>
+  <div class="error">{mojavi_error name="title"}</div>
+  </fieldset>
+</div>
+{/if}
+<form action="/setting/site" method="post">
+<p>
+  <label>{'title of site'|msg}</label><br />
+  <input id="title" class="input{if $request->hasError('title')} error{/if}" type="text" name="title" value="{if isset($site->title)}{$site->title}{/if}" />
+</p>
+
+<p>
+  <label>{'description of site'|msg}</label><br />
+  <textarea id="description" name="description" class="input textarea site_input">{$site->description}</textarea>
+</p>
+
+<p>
+  <label>{'show profile'|msg}</label><br />
+  {html_radios name="show_profile" options=$show_profiles
+  selected=$site->show_profile separator=" "}
+</p>
+
+<p>
+  <label>{'footprint'|msg}</label><br />
+  {html_radios name="show_footprint" options=$show_footprints
+  selected=$site->show_footprint separator=" "}
+</p>
+
+
+<input type="hidden" name="id" value="{$site->id}" />
+<input type="submit" name="submit" id="submit" class="submit button" value="{'update'|msg}" />
+</form>
+<br />
+
+<h2>{'plnet link roll'|msg}</h2><a name="linkroll" />
+<p>{'description of plnet link roll'|msg}</p>
+<p>
+  <textarea class="widget_code"><script type="text/javascript" src="{$SCRIPT_PATH}widget/entries.js?account={$account}"></script></textarea>
+</p>
+
+<div class="widget_view">
+  <script type="text/javascript" src="{$SCRIPT_PATH}widget/entries.js?account={$account}"></script>
+</div>
+<br />
+
+<h2>{'plnet footprint'|msg}</h2><a name="footprint" />
+<p>{'description of plnet footprint'|msg}</p>
+<p>
+  <textarea class="widget_code"><script type="text/javascript" src="{$SCRIPT_PATH}widget/footprints.js?account={$account}"></script></textarea>
+</p>
+
+<div class="widget_view">
+  <script type="text/javascript" src="{$SCRIPT_PATH}widget/footprints.js?account={$account}"></script>
+</div>

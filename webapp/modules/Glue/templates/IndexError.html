@@ -1,0 +1,37 @@
+{literal}<?xml version="1.0" encoding="utf-8"?>{/literal}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<base href="http://plnet.jp" target="_self">
+{css_link_tag name=niftyCorners}
+{css_link_tag name=niftyPrint media=print}
+{css_link_tag name=style}
+{css_link_tag name=public}
+<link rel="shortcut icon" href="{$SCRIPT_PATH}favicon.ico">
+{js_link_tag name=nifty}
+<title>Plnet &gt; {'feed is not registered'|msg}</title>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+{include file="$shared_dir/title.html"}
+{mojavi_action module=Blocks action=MenuTop}
+  </div>
+
+  <div id="content">
+    <div id="alpha">
+      <h2>{'feed is not registered'|msg}</h2>
+      <p>{'feed is not registered yet in this plnet'|msg}</p>
+    </div>
+  </div>
+{include file="$shared_dir/footer.html"}
+</div>
+<script type="text/javascript" src="scripts/corner-simple.js"></script>
+{include file="$shared_dir/analytics.html"}
+</body>
+</html>

@@ -1,0 +1,55 @@
+{literal}<?xml version="1.0" encoding="utf-8"?>{/literal}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<base href="{$SCRIPT_PATH}" target="_self" />
+<link rel="stylesheet" href="styles/style.css" type="text/css">
+<link rel="stylesheet" href="styles/admin_nomenu.css" type="text/css">
+<style type="text/css">
+{literal}
+input {
+  width: 300px;
+}
+{/literal}
+</style>
+<script src="scripts/prototype.js" type="text/javascript"></script>
+<script type="text/javascript">
+</script>
+<title>フィード設定</title>
+</head>
+
+<body>
+<div id="container">
+  <div id="header">{mojavi_action module=Blocks action=Header}</div>
+  <div id="content">
+    <b class="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>
+    <div id="alpha">
+
+      <div id="block">
+        <h2>フィードの追加</h2>
+        <form action="" method="post">
+        <p>
+          <label>タイトル</lable><br />
+          <div id="title"></div>
+        </p>
+        <p>
+          <label>フィードのURL</label><br />
+          <input type="text" name="uri" id="uri" value="" />
+        </p>
+        <p><button>追加</button></p>
+        </form>
+      </div>
+
+    </div>
+    <b class="rbottom"><b class="r4"></b><b class="r3"></b><b class="r2"></b><b class="r1"></b></b>
+
+  </div>
+  <div id="footer">{mojavi_action module=Blocks action=Footer}</div>
+</div>
+
+</body>
+</html>

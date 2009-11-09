@@ -1,0 +1,69 @@
+<h2 id="title">"{'plnet title'|msg}"</h2>
+<table id="column_container">
+  <tr>
+    <td>
+      <img id="screenshot" src="images/plnet_demo.png" />
+    </td>
+    <td>
+      <div class="block">
+      <h2>{'what is plnet'|msg}</h2>
+      <ul>
+        <li>
+          {'description of plnet 1'|msg}
+        </li>
+        <li>
+          {'description of plnet 2'|msg}
+          （<a href="services" title="{'service list'|msg}">{'service list'|msg}</a>）
+        </li>
+      </ul>
+      </div>
+
+      <div class="block">
+      <h2>{'what can i do'|msg}</h2>
+      <ul>
+        <li>{'description of what can i do 1'|msg}</li>
+        <li>{'description of what can i do 2'|msg}</li>
+        <li>{'description of what can i do 3'|msg}</li>
+        <li>{'description of what can i do 4'|msg}</li>
+        <li>{'description of what can i do 5'|msg}</li>
+        <li>{'description of what can i do 6'|msg}</li>
+        <li>{'description of what can i do 7'|msg}</li>
+        <li>{'description of what can i do 8'|msg}</li>
+      </ul>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="block">
+        <h2>{'how to use'|msg}</h2>
+        <object><param name="movie" value="http://www.youtube.com/v/KK4AG856dA8"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/KK4AG856dA8" type="application/x-shockwave-flash" wmode="transparent" width="320" height="260"></embed></object>
+        <p style="margin:3px;text-align:center"><a href="http://www.youtube.com/watch?v=KK4AG856dA8" target="_blank">{'see it bigger size'|msg}</a></p>
+      </div>
+    </td>
+    <td>
+      <div class="block">
+        {mojavi_action module=Blocks action=NewGlue lifetime=3600}
+      </div>
+
+      <div class="block">
+        <h2>
+          {'plnet development blog'|msg}
+          <a href="{$DEV_FEED_URI}"><img src="images/feed_icon.gif" title="{'plnet development blog'|msg}" class="icon" /></a>
+        </h2>
+        {mojavi_action module=Blocks action=DevFeed lifetime=3600}
+      </div>
+
+      <div class="block">
+      {*
+      {mojavi_action module=Blocks action=HotTags lifetime=86400}
+      *}
+      </div>
+
+    </td>
+  </tr>
+</table>
+
+<div id="register_button">
+  <a href="/register"><img src="/images/register_button_{$locale}.gif" /></a>
+</div>

@@ -1,0 +1,9 @@
+{literal}<?xml version="1.0" encoding="utf-8" ?>{/literal}
+<sitemapindex xmlns="http://www.google.com/schemas/sitemap/0.84">
+{foreach from=$sitemaps item=sitemap}
+  <sitemap>
+    <loc>{$sitemap.loc|escape}</loc>
+    <lastmod>{$sitemap.lastmod|date_W3C}</lastmod>
+  </sitemap>
+{/foreach}
+</sitemapindex>

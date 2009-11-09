@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns="http://purl.org/rss/1.0/"
+ xmlns:cc="http://web.resource.org/cc/"
+ xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+ xmlns:admin="http://webns.net/mvcb/"
+>
+
+<channel rdf:about="http://del.icio.us/komagata">
+<title>del.icio.us/komagata</title>
+<link>http://del.icio.us/komagata</link>
+<description></description>
+<items>
+ <rdf:Seq>
+  <rdf:li rdf:resource="http://phpspot.org/blog/archives/2006/10/cssjavascripttr.html" />
+  <rdf:li rdf:resource="http://gigazine.net/index.php?/news/comments/20061001_cccp/" />
+  <rdf:li rdf:resource="http://rubyforge.org/projects/rcrawl/" />
+  <rdf:li rdf:resource="http://blog.labnotes.org/2006/07/11/scraping-with-style-scrapi-toolkit-for-ruby/" />
+  <rdf:li rdf:resource="http://trac-hacks.org/" />
+  <rdf:li rdf:resource="http://yadorigi.seesaa.net/article/24123831.html" />
+  <rdf:li rdf:resource="http://www.ayu.ics.keio.ac.jp/~mukai/translate/write_zsh_functions.html" />
+  <rdf:li rdf:resource="http://www.tsg.ne.jp/GANA/S/sow/index.html" />
+  <rdf:li rdf:resource="http://opentechpress.jp/desktop/03/06/16/1621207.shtml" />
+  <rdf:li rdf:resource="http://mist.suenaga.cse.nagoya-u.ac.jp/trac/wiki/WhatIsMIST" />
+  <rdf:li rdf:resource="http://dev.hyperstruct.net/trac/mozlab" />
+  <rdf:li rdf:resource="http://www.dappit.com/dapplications/Magg/" />
+  <rdf:li rdf:resource="http://fg-180.katamayu.net/archives/2005/08/25/185402" />
+  <rdf:li rdf:resource="http://www.measuremap.com/developer/slider/" />
+  <rdf:li rdf:resource="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/429usekeyssh.html" />
+  <rdf:li rdf:resource="http://www.cssremix.com/" />
+  <rdf:li rdf:resource="http://www.csselite.com/" />
+  <rdf:li rdf:resource="http://la.ma.la/blog/diary_200609220110.htm" />
+  <rdf:li rdf:resource="http://kawa.at.webry.info/200511/article_10.html" />
+  <rdf:li rdf:resource="http://www.geocities.jp/iconsetjp/coLinux-Memo/index.html" />
+  <rdf:li rdf:resource="http://saikyoline.jp/wiki/index.php?cmd=read&amp;page=%A5%E1%A5%E2%2FcoLinux%CD%D1RootFS%A5%A4%A5%E1%A1%BC%A5%B8%A4%F2Debian%A4%CEISO%A5%A4%A5%E1%A1%BC%A5%B8%A4%AB%A4%E9%BA%EE%C0%AE" />
+  <rdf:li rdf:resource="http://blog.masuidrive.jp/articles/2006/08/16/scoped_access" />
+  <rdf:li rdf:resource="http://www.stylish-style.com/csstec/ultimate/sample/fixfoot-sample.html" />
+  <rdf:li rdf:resource="http://blog.netswitch.jp/articles/2006/01/14/rails-plugins" />
+  <rdf:li rdf:resource="http://www.trynt.com/apis/" />
+  <rdf:li rdf:resource="http://geo.tatamilab.jp/" />
+  <rdf:li rdf:resource="http://awdwr.shugo.net/info/codes" />
+  <rdf:li rdf:resource="http://d.hatena.ne.jp/moro/20060429/1146324366" />
+  <rdf:li rdf:resource="http://shinywhitebox.com/home/home.html" />
+  <rdf:li rdf:resource="http://zengin.ajtw.net/" />
+  <rdf:li rdf:resource="http://www.venus.dti.ne.jp/~mugicha/vim/vimtips.html" />
+ </rdf:Seq>
+</items>
+</channel>
+
+<item rdf:about="http://phpspot.org/blog/archives/2006/10/cssjavascripttr.html">
+<title>CSSとJavaScriptでブロック要素の角を自在に操るライブラリ『Transcorners』:phpspot開発日誌</title>
+<link>http://phpspot.org/blog/archives/2006/10/cssjavascripttr.html</link>
+<description>CSSとJavaScriptでブロック要素の角を自在に操るライブラリ『Transcorners』。</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-10-01T13:13:05Z</dc:date>
+<dc:subject>css design javascript lib</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/lib" />
+    <rdf:li resource="http://del.icio.us/tag/javascript" />
+    <rdf:li resource="http://del.icio.us/tag/css" />
+    <rdf:li resource="http://del.icio.us/tag/design" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://gigazine.net/index.php?/news/comments/20061001_cccp/">
+<title>ffdshowより便利なコーデックセット「CCCP」 - GIGAZINE</title>
+<link>http://gigazine.net/index.php?/news/comments/20061001_cccp/</link>
+<description>ほとんどのAVI形式、MKV形式、OGM形式、MP4形式のムービー再生が可能になります。</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-30T23:52:22Z</dc:date>
+<dc:subject>avi codec movie</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/codec" />
+    <rdf:li resource="http://del.icio.us/tag/avi" />
+    <rdf:li resource="http://del.icio.us/tag/movie" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://rubyforge.org/projects/rcrawl/">
+<title>RubyForge: Rcrawl: Project Info</title>
+<link>http://rubyforge.org/projects/rcrawl/</link>
+<description>Rcrawl is a web crawler written in ruby.</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-30T16:48:23Z</dc:date>
+<dc:subject>oss ruby</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/ruby" />
+    <rdf:li resource="http://del.icio.us/tag/oss" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://blog.labnotes.org/2006/07/11/scraping-with-style-scrapi-toolkit-for-ruby/">
+<title>Labnotes » Scraping with style: scrAPI toolkit for Ruby</title>
+<link>http://blog.labnotes.org/2006/07/11/scraping-with-style-scrapi-toolkit-for-ruby/</link>
+<description>HTMLスクレイピングツールキット</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-29T06:29:16Z</dc:date>
+<dc:subject>lib ruby</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/ruby" />
+    <rdf:li resource="http://del.icio.us/tag/lib" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://trac-hacks.org/">
+<title>Trac Hacks - Plugins Macros etc. - Trac</title>
+<link>http://trac-hacks.org/</link>
+<description>tracプラギン一杯</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-29T06:27:35Z</dc:date>
+<dc:subject>trac</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/trac" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://yadorigi.seesaa.net/article/24123831.html">
+<title>やどりぎ@NET: trac + TracBurndownプラグインでスクラム開発のすすめ</title>
+<link>http://yadorigi.seesaa.net/article/24123831.html</link>
+<description>バーンダウンチャートを追加するプラグインであるTracBurndownプラグイン</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-29T06:25:48Z</dc:date>
+<dc:subject>trac</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/trac" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.ayu.ics.keio.ac.jp/~mukai/translate/write_zsh_functions.html">
+<title>zsh補完関数の書き方(訳)</title>
+<link>http://www.ayu.ics.keio.ac.jp/~mukai/translate/write_zsh_functions.html</link>
+<description>zsh補完関数の書き方</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-29T06:23:39Z</dc:date>
+<dc:subject>zsh</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/zsh" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.tsg.ne.jp/GANA/S/sow/index.html">
+<title>Start on Windows</title>
+<link>http://www.tsg.ne.jp/GANA/S/sow/index.html</link>
+<description>Windows 用の rshd</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-29T06:20:22Z</dc:date>
+<dc:subject>tool windows</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/windows" />
+    <rdf:li resource="http://del.icio.us/tag/tool" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://opentechpress.jp/desktop/03/06/16/1621207.shtml">
+<title>Open Tech Press | GStreamer概要</title>
+<link>http://opentechpress.jp/desktop/03/06/16/1621207.shtml</link>
+<description>マルチメディア系のデータを扱うアプリケーションを作成する土台となるもの</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-29T02:35:23Z</dc:date>
+<dc:subject>c c++ gnome image lib sound</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/gnome" />
+    <rdf:li resource="http://del.icio.us/tag/lib" />
+    <rdf:li resource="http://del.icio.us/tag/c" />
+    <rdf:li resource="http://del.icio.us/tag/c%2B%2B" />
+    <rdf:li resource="http://del.icio.us/tag/image" />
+    <rdf:li resource="http://del.icio.us/tag/sound" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://mist.suenaga.cse.nagoya-u.ac.jp/trac/wiki/WhatIsMIST">
+<title>WhatIsMIST - MIST Project - Trac</title>
+<link>http://mist.suenaga.cse.nagoya-u.ac.jp/trac/wiki/WhatIsMIST</link>
+<description>GStreamerみたいなものなのかな？</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-29T02:34:35Z</dc:date>
+<dc:subject>c c++ image lib sound</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/lib" />
+    <rdf:li resource="http://del.icio.us/tag/c" />
+    <rdf:li resource="http://del.icio.us/tag/c%2B%2B" />
+    <rdf:li resource="http://del.icio.us/tag/sound" />
+    <rdf:li resource="http://del.icio.us/tag/image" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://dev.hyperstruct.net/trac/mozlab">
+<title>MozLab - Trac</title>
+<link>http://dev.hyperstruct.net/trac/mozlab</link>
+<description>Connect to Firefox and other Mozilla apps</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-28T15:33:54Z</dc:date>
+<dc:subject>extension firefox これはすごい</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/firefox" />
+    <rdf:li resource="http://del.icio.us/tag/extension" />
+    <rdf:li resource="http://del.icio.us/tag/%E3%81%93%E3%82%8C%E3%81%AF%E3%81%99%E3%81%94%E3%81%84" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.dappit.com/dapplications/Magg/">
+<title>Magg - The Movie Aggregator, Built Using Dapper</title>
+<link>http://www.dappit.com/dapplications/Magg/</link>
+<description>movie aggregator</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-28T02:59:57Z</dc:date>
+<dc:subject>aggregator mashup webservice</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/webservice" />
+    <rdf:li resource="http://del.icio.us/tag/aggregator" />
+    <rdf:li resource="http://del.icio.us/tag/mashup" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://fg-180.katamayu.net/archives/2005/08/25/185402">
+<title>83's : /tmp/mysql.sockが見つからないって言われた</title>
+<link>http://fg-180.katamayu.net/archives/2005/08/25/185402</link>
+<description>config/database.ymlに設定を書くらしい。socket: /var/lib/mysql/mysql.sock</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-27T15:03:25Z</dc:date>
+<dc:subject>mysql rails ruby</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/rails" />
+    <rdf:li resource="http://del.icio.us/tag/ruby" />
+    <rdf:li resource="http://del.icio.us/tag/mysql" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.measuremap.com/developer/slider/">
+<title>Developer | Slider | Measure Map</title>
+<link>http://www.measuremap.com/developer/slider/</link>
+<description>Flashでグラフ</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-27T10:00:22Z</dc:date>
+<dc:subject>flash graph rails ruby</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/flash" />
+    <rdf:li resource="http://del.icio.us/tag/graph" />
+    <rdf:li resource="http://del.icio.us/tag/rails" />
+    <rdf:li resource="http://del.icio.us/tag/ruby" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.atmarkit.co.jp/flinux/rensai/linuxtips/429usekeyssh.html">
+<title>＠IT：鍵交換方式のsshでアクセスするには</title>
+<link>http://www.atmarkit.co.jp/flinux/rensai/linuxtips/429usekeyssh.html</link>
+<description>puttyの鍵を変換</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-27T09:59:09Z</dc:date>
+<dc:subject>key putty ssh</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/ssh" />
+    <rdf:li resource="http://del.icio.us/tag/key" />
+    <rdf:li resource="http://del.icio.us/tag/putty" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.cssremix.com/">
+<title>CSS Remix: CSS-Based Website Gallery</title>
+<link>http://www.cssremix.com/</link>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-26T13:14:47Z</dc:date>
+<dc:subject>css design</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/css" />
+    <rdf:li resource="http://del.icio.us/tag/design" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.csselite.com/">
+<title>CSSElite CSS Gallery</title>
+<link>http://www.csselite.com/</link>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-26T13:14:07Z</dc:date>
+<dc:subject>css design</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/css" />
+    <rdf:li resource="http://del.icio.us/tag/design" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://la.ma.la/blog/diary_200609220110.htm">
+<title>最速インターフェース研究会 :: SafariのAjaxの文字化けをクライアント側だけで対応するバッドノウハウ</title>
+<link>http://la.ma.la/blog/diary_200609220110.htm</link>
+<description>最近のバージョンだとcontent-typeがちゃんとしてれば化けなかったような記憶があるけど、まあともかくとして、Safariで文字化けするのはJavaScript側だけで対処することができたりする。</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-26T12:26:38Z</dc:date>
+<dc:subject>javascript バッドノウハウ</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/javascript" />
+    <rdf:li resource="http://del.icio.us/tag/%E3%83%90%E3%83%83%E3%83%89%E3%83%8E%E3%82%A6%E3%83%8F%E3%82%A6" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://kawa.at.webry.info/200511/article_10.html">
+<title>[coLinux] apt-get install x-window-systemエラー Kawa.net Blog（ゆうすけブログ）/ウェブリブログ</title>
+<link>http://kawa.at.webry.info/200511/article_10.html</link>
+<description>libx11-6 libxt6インストール時に発生するエラー</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-26T09:13:00Z</dc:date>
+<dc:subject>colinux debian</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/colinux" />
+    <rdf:li resource="http://del.icio.us/tag/debian" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.geocities.jp/iconsetjp/coLinux-Memo/index.html">
+<title>Memo: coLinux + Debian</title>
+<link>http://www.geocities.jp/iconsetjp/coLinux-Memo/index.html</link>
+<description>x-window-system をインストールすると xdm で coLinux が落ちるので使えなくする． cd /etc/init.d/ &amp;&amp; mv xdm xdm.bk</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-26T08:52:07Z</dc:date>
+<dc:subject>colinux debian</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/colinux" />
+    <rdf:li resource="http://del.icio.us/tag/debian" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://saikyoline.jp/wiki/index.php?cmd=read&amp;page=%A5%E1%A5%E2%2FcoLinux%CD%D1RootFS%A5%A4%A5%E1%A1%BC%A5%B8%A4%F2Debian%A4%CEISO%A5%A4%A5%E1%A1%BC%A5%B8%A4%AB%A4%E9%BA%EE%C0%AE">
+<title>メモ/coLinux用RootFSイメージをDebianのISOイメージから作成 - SaikyoLine.jp</title>
+<link>http://saikyoline.jp/wiki/index.php?cmd=read&amp;page=%A5%E1%A5%E2%2FcoLinux%CD%D1RootFS%A5%A4%A5%E1%A1%BC%A5%B8%A4%F2Debian%A4%CEISO%A5%A4%A5%E1%A1%BC%A5%B8%A4%AB%A4%E9%BA%EE%C0%AE</link>
+<description>アラ、これは便利だ</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-21T16:12:59Z</dc:date>
+<dc:subject>colinux debian etch</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/colinux" />
+    <rdf:li resource="http://del.icio.us/tag/debian" />
+    <rdf:li resource="http://del.icio.us/tag/etch" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://blog.masuidrive.jp/articles/2006/08/16/scoped_access">
+<title>コントローラごとにwith_scopeを実行 scoped_accessプラグイン [開発に必須]</title>
+<link>http://blog.masuidrive.jp/articles/2006/08/16/scoped_access</link>
+<description>findとかに自動でcondition追加</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-21T05:48:36Z</dc:date>
+<dc:subject>plugins rails ruby</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/ruby" />
+    <rdf:li resource="http://del.icio.us/tag/rails" />
+    <rdf:li resource="http://del.icio.us/tag/plugins" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.stylish-style.com/csstec/ultimate/sample/fixfoot-sample.html">
+<title>フッターを画面の下に表示サンプル</title>
+<link>http://www.stylish-style.com/csstec/ultimate/sample/fixfoot-sample.html</link>
+<description>フッターを常に画面の下</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-21T05:44:41Z</dc:date>
+<dc:subject>css design</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/design" />
+    <rdf:li resource="http://del.icio.us/tag/css" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://blog.netswitch.jp/articles/2006/01/14/rails-plugins">
+<title>netswitch! | Rails Plugins...</title>
+<link>http://blog.netswitch.jp/articles/2006/01/14/rails-plugins</link>
+<description>プラグイン一覧</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-21T05:43:27Z</dc:date>
+<dc:subject>plugins rails ruby</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/ruby" />
+    <rdf:li resource="http://del.icio.us/tag/rails" />
+    <rdf:li resource="http://del.icio.us/tag/plugins" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.trynt.com/apis/">
+<title>API/Web Services are listed in alphabetical order.</title>
+<link>http://www.trynt.com/apis/</link>
+<description>小物API沢山</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-18T08:43:58Z</dc:date>
+<dc:subject>api design webservice</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/webservice" />
+    <rdf:li resource="http://del.icio.us/tag/api" />
+    <rdf:li resource="http://del.icio.us/tag/design" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://geo.tatamilab.jp/">
+<title>世界ジオコーダー｜たたみラボ</title>
+<link>http://geo.tatamilab.jp/</link>
+<description>カタカナで国名、都市名を検索し、緯度経度を取得できるサービス</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-17T10:57:03Z</dc:date>
+<dc:subject>map webservice</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/map" />
+    <rdf:li resource="http://del.icio.us/tag/webservice" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://awdwr.shugo.net/info/codes">
+<title>『RailsによるアジャイルWebアプリケーション開発』サポートサイト</title>
+<link>http://awdwr.shugo.net/info/codes</link>
+<description>サンプルコード</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-17T10:18:27Z</dc:date>
+<dc:subject>rails ruby</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/ruby" />
+    <rdf:li resource="http://del.icio.us/tag/rails" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://d.hatena.ne.jp/moro/20060429/1146324366">
+<title>moroの日記 - 新しくRailsアプリを作るときにやること</title>
+<link>http://d.hatena.ne.jp/moro/20060429/1146324366</link>
+<description>Railsアプリを作るときにやること</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-17T07:54:44Z</dc:date>
+<dc:subject>rails ruby</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/rails" />
+    <rdf:li resource="http://del.icio.us/tag/ruby" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://shinywhitebox.com/home/home.html">
+<title>iShowU</title>
+<link>http://shinywhitebox.com/home/home.html</link>
+<description>OS X用スクリーンキャストできるソフト</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-17T00:23:46Z</dc:date>
+<dc:subject>screencast</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/screencast" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://zengin.ajtw.net/">
+<title>金融機関コード・銀行コード検索</title>
+<link>http://zengin.ajtw.net/</link>
+<description>これがわからなくて時々イラッとする。便利！</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-17T00:02:28Z</dc:date>
+<dc:subject>tool</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/tool" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+<item rdf:about="http://www.venus.dti.ne.jp/~mugicha/vim/vimtips.html">
+<title>Vim Tips@猫がびっくり</title>
+<link>http://www.venus.dti.ne.jp/~mugicha/vim/vimtips.html</link>
+<description>バッファ切替え他。</description>
+<dc:creator>komagata</dc:creator>
+<dc:date>2006-09-16T21:58:26Z</dc:date>
+<dc:subject>vim</dc:subject>
+<taxo:topics>
+  <rdf:Bag>
+    <rdf:li resource="http://del.icio.us/tag/vim" />
+  </rdf:Bag>
+</taxo:topics>
+</item>
+
+</rdf:RDF>

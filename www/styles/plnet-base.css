@@ -1,0 +1,77 @@
+@import "font.css";
+@import "link.css";
+
+/* element */
+body {
+  background: transparent url("../images/bg.gif") repeat-x top;
+  background-color: #33436a;
+  text-align: center;
+  letter-spacing: 0.05em;
+  border-top: 6px solid #f57900;
+}
+
+h2 {
+  font-size: 14px;
+  line-height: 100%;
+  margin: 0.4em 0; padding: 0;
+  color: #33436a;
+}
+
+/* id */
+#container {
+  margin: 0 auto;
+  width: 800px;
+  text-align: center;
+}
+
+#header {
+  margin: 20px 0;
+}
+
+#header h1 {
+  text-align: left;
+}
+
+#header h1 img {
+  margin-top: 10px;
+}
+
+#content {
+  margin: 0 auto;
+  text-align: left;
+  background: #fff;
+  width: 100%;
+}
+
+#alpha {
+  padding: 2em;
+  line-height: 160%;
+}
+
+#menu_top {
+  color: #fff;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  text-align: right;
+}
+
+#footer {
+  color: #fff;
+  line-height: 200%;
+  text-align: center;
+  clear: both;
+  margin: 12px;
+  padding: 0;
+}
+
+/* dwindow */
+.dwindow {
+  padding: 12px;
+  border-top: solid 20px #33436b;
+  background: #fff;
+}
+
+#dinput {
+  width: 80%;
+}

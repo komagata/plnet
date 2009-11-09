@@ -1,0 +1,1244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed version="0.3" xmlns="http://purl.org/atom/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="ja">
+<title>p0t</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/" />
+<modified>2006-10-02T03:38:39Z</modified>
+<tagline>computing and gaming</tagline>
+<id>tag:p0t.jp,2006:/mt/1</id>
+<generator url="http://www.movabletype.org/" version="3.3-ja">Movable Type</generator>
+<copyright>Copyright (c) 2006, komagata</copyright>
+<entry>
+<title>新サーバが良い</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/10/post_487.html" />
+<modified>2006-10-02T03:38:39Z</modified>
+<issued>2006-10-02T03:13:49Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2084</id>
+<created>2006-10-02T03:13:49Z</created>
+<summary type="text/plain">503が出まくっていたplnet.jpを新しい専用サーバへ移行しました。 はえー...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>plnet</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<p><a href="http://plnet.jp/503.html">503</a>が出まくっていた<a href="http://plnet.jp">plnet.jp</a>を新しい専用サーバへ移行しました。</p>
+
+<p>はえー、はえー。</p>
+
+<p>これで<a href="http://p0t.jp/mt/archives/2006/09/thank_you_for_y_1.html">止められまくりのだったcron</a>も動かせます。</p>
+
+<p>さくらインターネットの500円のヤツ、安くてかなり便利ですがアクセス増えるとやっぱり厳しいです。503ってことはプログラムの負荷というより単に共有してるApacheのMaxClients、MaxRequestsPerChildかなと思います。</p>
+
+<p>1万PV/1日ぐらいで503出初めて、2万PV/1日以上はまともに使えないって感じなのでニート（俺）以外ははじめっから専用サーバ借りたほうが良さそうです。あたりまえか。</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>DB  INI</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/10/db_ini.html" />
+<modified>2006-09-30T23:41:56Z</modified>
+<issued>2006-09-30T23:17:27Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2083</id>
+<created>2006-09-30T23:17:27Z</created>
+<summary type="text/plain">PHP4でDB系のテストがやりたくてrake db:fixtures:load的...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>php</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<p>PHP4でDB系のテストがやりたくてrake db:fixtures:load的にテーブル毎のファイルからDBへロード／ダンプするクラスを書いてみました。</p>
+
+<pre><code>&lt;?php
+require_once 'INILoader.php';
+dump_ini('/path/to/fixtures', 'mysql://user:pass@localhost/dbname');
+?&gt;</code></pre>
+
+<p>（magpieみたいにグローバルにいい加減なファサード作っちゃうquick & dirtyさ加減）</p>
+
+<p>こんな感じで書くと、</p>
+
+<pre><code>% cat fixtures/member.ini
+[member1]
+id = "1"
+design_id = "1"
+account = "komagata"
+password = "aaa"
+email = "komagata@p0t.jp"
+createdtime = "2006-08-12 15:36:51"
+[member2]
+id = "2"
+design_id = "2"
+account = "tom"
+password = "iii"
+email = "tom@gmail.com"
+createdtime = "2006-08-12 11:36:51"
+[member3]
+id = "3"
+design_id = "3"
+account = "bob"
+password = "uuu"
+email = "bob@gmail.com"
+createdtime = "2006-08-12 12:36:51"</code></pre>
+
+<p>こんな感じの中身を指定したディレクトリに“テーブル名.ini”で吐く。yamlだとまんま過ぎなので何故かiniです。</p>
+
+<pre><code>&lt;?php
+require_once 'INILoader.php';
+load_ini('/path/to/fixtures', 'mysql://user:pass@localhost/dbname');
+?&gt;</code></pre>
+
+<p>こう書くと逆にiniファイルを読んでテーブルにロードする。</p>
+
+<p>以下コード。（さっとパッケージ化できる人になりたい）</p>
+
+<pre><code>&lt;?php
+require_once 'DB.php';
+ 
+class INILoader
+{
+    var $fixtures_dir;
+    var $dsn;
+    var $key_check;
+    var $db;
+ 
+    function INILoader($fixtures_dir, $dsn, $key_check = true)
+    {
+        $this-&gt;fixtures_dir = $fixtures_dir;
+        $this-&gt;dsn = $dsn;
+        $this-&gt;key_check = $key_check;
+        $this-&gt;db =& DB::connect($dsn);
+        $this-&gt;db-&gt;autoCommit(false);
+        $this-&gt;db-&gt;setFetchMode(DB_FETCHMODE_ASSOC);
+    }
+ 
+    function load($name = null)
+    {
+        if (is_null($name)) {
+            $this-&gt;db-&gt;query('BEGIN');
+            $this-&gt;_truncate_all();
+            $this-&gt;_load_all();
+            $this-&gt;db-&gt;commit();
+        } else {
+            $this-&gt;db-&gt;query('BEGIN');
+            $this-&gt;_truncate($name);
+            $this-&gt;_load($name);
+            $this-&gt;db-&gt;commit();
+        }
+    }
+ 
+    function dump($name = null)
+    {
+        if (is_null($name)) {
+            $this-&gt;_remove_all();
+            $this-&gt;_dump_all();
+        } else {
+            $this-&gt;_remove($name);
+            $this-&gt;_dump($name);
+        }
+    }
+ 
+    function _load_all()
+    {
+        if (!$this-&gt;key_check and preg_match("/^mysql/", $this-&gt;dsn)) {
+            $this-&gt;db-&gt;query('SET FOREIGN_KEY_CHECKS = 0');
+        }
+ 
+        foreach ($this-&gt;_get_ini_files() as $file) {
+            list($name, $ext) = split("\.", $file);
+            $this-&gt;_load($name);
+        }
+ 
+        if (!$this-&gt;key_check and preg_match("/^mysql/", $this-&gt;dsn)) {
+            $this-&gt;db-&gt;query('SET FOREIGN_KEY_CHECKS = 1');
+        }
+    }
+ 
+    function _truncate_all()
+    {
+        foreach ($this-&gt;_get_ini_files() as $file) {
+            list($name, $ext) = split("\.", $file);
+            $this-&gt;_truncate($name);
+        }
+    }
+ 
+    function _load($name)
+    {
+        echo "Load table {$name}... ";
+        $data = parse_ini_file("{$this-&gt;fixtures_dir}/{$name}.ini", true);
+        foreach ($data as $fields) {
+            if (DB::isError($res = $this-&gt;db-&gt;autoExecute($name, $fields))) {
+                $this-&gt;db-&gt;rollback();
+                echo "failed\n";
+                trigger_error('INILoader::_load(): Failed to load. '
+                .$res-&gt;toString(), E_USER_ERROR);
+            }
+        }
+        echo "succeed\n";
+    }
+ 
+    function _truncate($name)
+    {
+        echo "Truncate table {$name}... ";
+        $sql = "TRUNCATE $name";
+        if (DB::isError($res = $this-&gt;db-&gt;query($sql))) {
+            $this-&gt;db-&gt;rollback();
+            echo "failed\n";
+            trigger_error('INILoader::_truncate(): Failed to truncate. '
+            .$res-&gt;toString(), E_USER_ERROR);
+        }
+        echo "succeed\n";
+    }
+ 
+    function _dump_all()
+    {
+        foreach ($this-&gt;db-&gt;getTables() as $table) {
+            $this-&gt;_dump($table);
+        }
+    }
+ 
+    function _remove_all()
+    {
+        foreach ($this-&gt;db-&gt;getTables() as $table) {
+            $this-&gt;_remove($table);
+        }
+    }
+ 
+    function _dump($name)
+    {
+        echo "Dump table {$name}... ";
+        $file = "{$this-&gt;fixtures_dir}/{$name}.ini";
+        $handle = fopen($file, 'a');
+        $sql = "SELECT * FROM $name";
+        foreach ($this-&gt;db-&gt;getAll($sql) as $index =&gt; $fields) {
+            $line = "[{$name}".++$index."]\n";
+            foreach ($fields as $key =&gt; $value) {
+                $line .= "{$key} = \"{$value}\"\n";
+            }
+ 
+            if (!fwrite($handle, $line)) {
+                trigger_error("INILoader::dump(): Failed to write $file",
+                E_USER_ERROR);
+            }
+        }
+        fclose($handle);
+        echo "succeed\n";
+    }
+ 
+    function _remove($name)
+    {
+        echo "Remove file {$name}.ini ... ";
+        unlink("{$this-&gt;fixtures_dir}/{$name}.ini");
+        echo "succeed\n";
+    }
+ 
+    function _get_ini_files()
+    {
+        $files = array();
+        $d = dir($this-&gt;fixtures_dir);
+        while ($entry = $d-&gt;read()) {
+            if (preg_match("/\.ini$/", $entry)) {
+                $files[] = $entry;
+            }
+        }
+        $d-&gt;close();
+        return $files;
+    }
+}
+ 
+function load_ini($fixtures_dir, $dsn, $key_check = false)
+{
+    $loader =& new INILoader($fixtures_dir, $dsn, $key_check);
+    $loader-&gt;load();
+}
+ 
+function dump_ini($fixtures_dir, $dsn)
+{
+    $loader =& new INILoader($fixtures_dir, $dsn);
+    $loader-&gt;dump();
+}
+?&gt;</code></pre>]]>
+
+</content>
+</entry>
+<entry>
+<title>デフォルト派のすすめ</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/10/post_486.html" />
+<modified>2006-09-30T17:18:38Z</modified>
+<issued>2006-09-30T15:28:16Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2082</id>
+<created>2006-09-30T15:28:16Z</created>
+<summary type="text/plain">パソコンに関しては“なるべくデフォルト派”（あまりソフトを入れない）の俺です。結...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>develop</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<p>パソコンに関しては“なるべくデフォルト派”（あまりソフトを入れない）の俺です。結構多いと思われますが、デフォルト派のランチャーといえばやはり、</p>
+
+<p><a href="http://www.flickr.com/photos/komagata/256365986/" title="Photo Sharing"><img src="http://static.flickr.com/89/256365986_5b20f09995_o.png" width="403" height="175" alt="shell" /></a></p>
+
+<p>“ファイル名を指定して実行”（以下ファ実）</p>
+
+<p>コレ。</p>
+
+<p>そして、</p>
+
+<p><a href="http://www.flickr.com/photos/komagata/256408818/" title="Photo Sharing"><img src="http://static.flickr.com/81/256408818_cf4c3bf7dc_o.png" width="495" height="332" alt="quick_start" /></a></p>
+
+<p>“クイック起動”</p>
+
+<p>コレですよ。</p>
+
+<p>ファ実といえば、“ウィンドウズキー + R”。</p>
+
+<p>「最近のThinkPadは良くなった。」</p>
+
+<p>とはあるデフォルト派の言葉です。（ウィンドウズキーが付いた。）</p>
+
+<p><a href="http://smartbro.blogspot.com/2006/09/117-run-commands-in-windows-xp.html">こういうエントリ</a>が話題になるほど便利で便利でしょうがねえファ実ですが、ファイル名の補完ができないのが難点。</p>
+
+<p>そこで、「補完が効くヤツを使おう」ではなく、「補完が効かないなら短い名前を付ければ良い」と考えてしまうのがデフォルト派。</p>
+
+<p><a href="http://www.flickr.com/photos/komagata/256480021/" title="Photo Sharing"><img src="http://static.flickr.com/77/256480021_09c434b6d5_o.png" width="348" height="363" alt="bin" /></a></p>
+
+<p>PATHを通したフォルダに短い名前のショートカットを沢山置いておけっ・・・・・・・・・！！！</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>1クリックで開発環境を開く方法</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/1.html" />
+<modified>2006-09-30T15:24:34Z</modified>
+<issued>2006-09-30T14:46:38Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2081</id>
+<created>2006-09-30T14:46:38Z</created>
+<summary type="text/plain">UbuntuとWindowsをデュアルブートで使ったりしてたんですが、開発に関し...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>develop</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<p><a href="http://www.ubuntu.com/">Ubuntu</a>とWindowsをデュアルブートで使ったりしてたんですが、開発に関してWindowsで不便だと感じてた点がこれ。</p>
+
+<p>「開発環境に入りたい時に、“PuttyをWクリック　→　セッション名をWクリック”という2アクションが必要。」</p>
+
+<p>UbuntuやMacならTerminal立ち上げてすぐコマンド打ち始められるじゃないすか。不便じゃないですか。</p>
+
+<p>…。</p>
+
+<p>「何を言ってるんだこいつは。別に不便じゃない」という方、ありがとうございます。話が終わってしまいます。</p>
+
+<p>やり方は簡単です。</p>
+
+<p><a href="http://www.flickr.com/photos/komagata/256380302/" title="Photo Sharing"><img src="http://static.flickr.com/108/256380302_bdbf995d14_o.png" width="425" height="473" alt="shell_property" /></a></p>
+
+<p>こういうショートカットを作っておけば1クリでこうです。</p>
+
+<p><a href="http://www.flickr.com/photos/komagata/256365982/" title="Photo Sharing"><img src="http://static.flickr.com/95/256365982_c0478c0811_m.jpg" width="240" height="165" alt="shell_putty" /></a></p>
+
+<blockquote><a title="Using PuTTY" href="http://the.earth.li/~sgtatham/putty/0.58/htmldoc/Chapter3.html#using">Using PuTTY</a>
+
+<p>In order to start an existing saved session called sessionname, use the -load option (described in section 3.7.3.1).</p>
+
+<p>putty.exe -load "session name"</blockquote></p>
+
+<p>puttyは--helpとかやっても何も出ないんですが、-loadでセッション名を指定出来るんだそうです。パスフレーズ無しの鍵（NATなら外から入れないので問題ないと思う）でcoLinuxに入るセッションを作って、指定すればまるでGNOME Terminalでローカルの開発環境を使ってるみたいになります。</p>
+
+<p><a href="http://www.flickr.com/photos/komagata/256365974/" title="Photo Sharing"><img src="http://static.flickr.com/106/256365974_127a3c3caa_o.png" width="39" height="54" alt="shell_icon" /></a></p>
+
+<p>ついでにさっきの画像の様にショートカットキーを設定したショートカットをデスクトップに置けばマウス無しで開けて便利です。</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>続Webサービスのライセンス</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/web_6.html" />
+<modified>2006-09-30T10:42:08Z</modified>
+<issued>2006-09-30T09:46:28Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2080</id>
+<created>2006-09-30T09:46:28Z</created>
+<summary type="text/plain">p0t: Webサービスのライセンス でもブラウザがプラットフォームになると、W...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>software</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<blockquote><a title="p0t: Webサービスのライセンス" href="http://p0t.jp/mt/archives/2006/07/gplv3_2nd.html">p0t: Webサービスのライセンス</a>
+
+<p>でもブラウザがプラットフォームになると、Webサービスの利用規約とWeb APIの利用規約がGPL、LGPLの変わりになってどうでもよくなっちゃうのかな。</p>
+
+<p>それぞれ標準のライセンスがあれば簡単なのに。ちょっとググったけど出てこなかった。</blockquote></p>
+
+<p>この問題。</p>
+
+<blockquote><a title="【レポート】European Open Source Convention 2006 - Tim O'Reilly氏、Open Source 2.0を語る (2) Web 2.0時代のライセンス (MYCOMジャーナル)" href="http://journal.mycom.co.jp/articles/2006/09/20/oscon1/001.html">【レポート】European Open Source Convention 2006 - Tim O'Reilly氏、Open Source 2.0を語る (2) Web 2.0時代のライセンス (MYCOMジャーナル)</a>
+
+<p>「インターネットがプラットフォームとなった時代は、はじまったばかりだ」とO'Reilly氏は言う。まだどんなビジネスチャンスがあるのか、どんなロックインが出てくるのかは分からない。「Webサービスがオープンになるというのはどういうことか、データが本当にフリーになるというのはどういうことか、考えることはたくさんある」と課題提起した。</blockquote></p>
+
+<p>考え中ってことみたいです。APIだけじゃなく、データについても考えなくちゃいけないんですな。</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>居た</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/post_485.html" />
+<modified>2006-09-30T07:31:18Z</modified>
+<issued>2006-09-30T07:28:52Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2079</id>
+<created>2006-09-30T07:28:52Z</created>
+<summary type="text/plain">Flickr Services Serialized PHP Response ...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>php</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<blockquote><a title="Flickr Services" href="http://www.flickr.com/services/api/response.php.html">Flickr Services</a>
+
+<p>Serialized PHP Response Format</p>
+
+<p>PHP has a built-in serialized data structure format, using the serialize() and unserialize() functions.</p>
+
+<p>To return an API response in PHP serialized format, send a parameter "format" in the request with a value of "php_serial".</blockquote></p>
+
+<p>来てる！来てる！</p>
+
+<blockquote><a title="p0t: PHPRPC" href="http://p0t.jp/mt/archives/2006/08/pear_pe_1.html">p0t: PHPRPC</a>
+
+<p>このフォーマットを汎用データ形式として広めようって剛の者はいないかな？</blockquote></p>]]>
+
+</content>
+</entry>
+<entry>
+<title>鍵認証まとめ</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/post_484.html" />
+<modified>2006-09-30T07:25:56Z</modified>
+<issued>2006-09-30T06:59:18Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2078</id>
+<created>2006-09-30T06:59:18Z</created>
+<summary type="text/plain">p0t: 鍵認証に目を反らすな うーん・・・ パーミッションですが、$HOME/...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>unix</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<blockquote><a title="p0t: 鍵認証に目を反らすな" href="http://p0t.jp/mt/archives/2006/09/post_483.html">p0t: 鍵認証に目を反らすな</a>
+
+<p>うーん・・・<br />
+パーミッションですが、$HOME/.sshだけでなく、<br />
+/や/homeや/home/USERNAMEが775だったりしてもダメなので、その確認をしたほうがいいかも<br />
+一度<br />
+StrictModes no<br />
+でsshdを動かしてみるとか・・・</p>
+
+<p>Posted by: Ryosuke | 2006年09月30日 03:58</blockquote></p>
+
+<p>Ryosukeさんの情報で鍵認証できない問題が解決しました。ありがとうございます！鍵認証に対する苦手意識が消えた！心理カウンセラーにも治せない俺の下らない悩みがどんどん解決していきます。</p>
+
+<p>まとめときます。</p>
+
+<p>手順：</p>
+
+<pre><code>ssh-keygen -t rsa
+ssh komagata@komagata.no-ip.org "echo `cat ~/.ssh/id_rsa.pub`  &gt;&gt; ~/.ssh/authorized_keys"</code></pre>
+
+<p>チェックするところ：</p>
+
+<ul>
+<li>RSAAuthentication yes、PubkeyAuthentication yes（普通はデフォルト）</li>
+<li>~/.sshが700、.~/.ssh/authorized_keysが600</li>
+<li>/, /home, ~にgroup, other書き込み権限が無いこと（権限関連はStrictModes noで一応無視できる）</li>
+</ul>
+
+<p>デフォルトですが、一応sshd_config載せときます。</p>
+
+<pre><code># Package generated configuration file
+# See the sshd(8) manpage for details
+ 
+# What ports, IPs and protocols we listen for
+Port 22
+# Use these options to restrict which interfaces/protocols sshd will bind to
+#ListenAddress ::
+#ListenAddress 0.0.0.0
+Protocol 2
+# HostKeys for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+#Privilege Separation is turned on for security
+UsePrivilegeSeparation yes
+ 
+# Lifetime and size of ephemeral version 1 server key
+KeyRegenerationInterval 3600
+ServerKeyBits 768
+ 
+# Logging
+SyslogFacility AUTH
+LogLevel INFO
+ 
+# Authentication:
+LoginGraceTime 120
+PermitRootLogin no
+StrictModes yes
+ 
+RSAAuthentication yes
+PubkeyAuthentication yes
+#AuthorizedKeysFile     %h/.ssh/authorized_keys
+ 
+# Don't read the user's ~/.rhosts and ~/.shosts files
+IgnoreRhosts yes
+# For this to work you will also need host keys in /etc/ssh_known_hosts
+RhostsRSAAuthentication no
+# similar for protocol version 2
+HostbasedAuthentication no
+# Uncomment if you don't trust ~/.ssh/known_hosts for RhostsRSAAuthentication
+#IgnoreUserKnownHosts yes
+ 
+# To enable empty passwords, change to yes (NOT RECOMMENDED)
+PermitEmptyPasswords no
+ 
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication no
+ 
+# Change to no to disable tunnelled clear text passwords
+#PasswordAuthentication yes
+ 
+# Kerberos options
+#KerberosAuthentication no
+#KerberosGetAFSToken no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+ 
+# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+ 
+X11Forwarding yes
+X11DisplayOffset 10
+PrintMotd no
+PrintLastLog yes
+KeepAlive yes
+#UseLogin no
+ 
+#MaxStartups 10:30:60
+#Banner /etc/issue.net
+ 
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+ 
+Subsystem sftp /usr/lib/openssh/sftp-server
+ 
+UsePAM yes</code></pre>]]>
+
+</content>
+</entry>
+<entry>
+<title>鍵認証に目を反らすな</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/post_483.html" />
+<modified>2006-09-28T01:10:23Z</modified>
+<issued>2006-09-27T23:05:17Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2077</id>
+<created>2006-09-27T23:05:17Z</created>
+<summary type="text/plain">coLinuxが上手く行ったので今まで薄目開けて対応してた（出来たり出来なかった...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>unix</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<p>coLinuxが上手く行ったので今まで薄目開けて対応してた（出来たり出来なかったりしてたけどまあいいかと気にしないフリをしていた）鍵認証に正面から対応してみようと思います。</p>
+
+<p>インスコしたcoLinuxからいくつかのサーバに公開鍵を登録してみた。やはり、行けるサーバと行けないサーバがある。</p>
+
+<ul>
+<li>行けるサーバ： komagata.sakura.ne.jp (FreeBSD 4.10、 OpenSSH_3.5p1)</li>
+<li>いけないサーバ： komagata.no-ip.org (Debian Etch、OpenSSH_4.3p2)</li>
+</ul>
+
+<p>鍵作成、登録手順：</p>
+
+<pre><code>ssh-keygen -t rsa
+ssh komagata@komagata.sakura.ne.jp "echo `cat ~/.ssh/id_rsa.pub`  &gt;&gt; ~/.ssh/authorized_keys"
+ssh komagata@komagata.no-ip.org "echo `cat ~/.ssh/id_rsa.pub`  &gt;&gt; ~/.ssh/authorized_keys"</code></pre>
+
+<p>行ける時：</p>
+
+<pre><code>dev:~% ssh -vvv komagata@komagata.sakura.ne.jp
+OpenSSH_4.3p2 Debian-3, OpenSSL 0.9.8c 05 Sep 2006
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: Applying options for *
+debug2: ssh_connect: needpriv 0
+debug1: Connecting to komagata.sakura.ne.jp [59.106.13.181] port 22.
+debug1: Connection established.
+debug1: identity file /home/komagata/.ssh/identity type -1
+debug3: Not a RSA1 key file /home/komagata/.ssh/id_rsa.
+debug2: key_type_from_name: unknown key type '-----BEGIN'
+debug3: key_read: missing keytype
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug2: key_type_from_name: unknown key type '-----END'
+debug3: key_read: missing keytype
+debug1: identity file /home/komagata/.ssh/id_rsa type 1
+debug1: identity file /home/komagata/.ssh/id_dsa type -1
+debug1: Remote protocol version 1.99, remote software version OpenSSH_3.5p1 FreeBSD-20030924
+debug1: match: OpenSSH_3.5p1 FreeBSD-20030924 pat OpenSSH_3.*
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_4.3p2 Debian-3
+debug2: fd 3 setting O_NONBLOCK
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug2: kex_parse_kexinit: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+debug2: kex_parse_kexinit: ssh-rsa,ssh-dss
+debug2: kex_parse_kexinit: aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour128,arcfour256,arcfour,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se,aes128-ctr,aes192-ctr,aes256-ctr
+debug2: kex_parse_kexinit: aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour128,arcfour256,arcfour,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se,aes128-ctr,aes192-ctr,aes256-ctr
+debug2: kex_parse_kexinit: hmac-md5,hmac-sha1,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: hmac-md5,hmac-sha1,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib
+debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: first_kex_follows 0 
+debug2: kex_parse_kexinit: reserved 0 
+debug2: kex_parse_kexinit: diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1
+debug2: kex_parse_kexinit: ssh-dss
+debug2: kex_parse_kexinit: aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se
+debug2: kex_parse_kexinit: aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se
+debug2: kex_parse_kexinit: hmac-md5,hmac-sha1,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: hmac-md5,hmac-sha1,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: none,zlib
+debug2: kex_parse_kexinit: none,zlib
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: first_kex_follows 0 
+debug2: kex_parse_kexinit: reserved 0 
+debug2: mac_init: found hmac-md5
+debug1: kex: server-&gt;client aes128-cbc hmac-md5 none
+debug2: mac_init: found hmac-md5
+debug1: kex: client-&gt;server aes128-cbc hmac-md5 none
+debug1: SSH2_MSG_KEX_DH_GEX_REQUEST(1024&lt;1024&lt;8192) sent
+debug1: expecting SSH2_MSG_KEX_DH_GEX_GROUP
+debug2: dh_gen_key: priv key bits set: 131/256
+debug2: bits set: 515/1024
+debug1: SSH2_MSG_KEX_DH_GEX_INIT sent
+debug1: expecting SSH2_MSG_KEX_DH_GEX_REPLY
+debug3: check_host_in_hostfile: filename /home/komagata/.ssh/known_hosts
+debug3: check_host_in_hostfile: match line 3
+debug3: check_host_in_hostfile: filename /home/komagata/.ssh/known_hosts
+debug3: check_host_in_hostfile: match line 4
+debug1: Host 'komagata.sakura.ne.jp' is known and matches the DSA host key.
+debug1: Found key in /home/komagata/.ssh/known_hosts:3
+debug2: bits set: 537/1024
+debug1: ssh_dss_verify: signature correct
+debug2: kex_derive_keys
+debug2: set_newkeys: mode 1
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug2: set_newkeys: mode 0
+debug1: SSH2_MSG_NEWKEYS received
+debug1: SSH2_MSG_SERVICE_REQUEST sent
+debug2: service_accept: ssh-userauth
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug2: key: /home/komagata/.ssh/identity ((nil))
+debug2: key: /home/komagata/.ssh/id_rsa (0x80953f0)
+debug2: key: /home/komagata/.ssh/id_dsa ((nil))
+debug1: Authentications that can continue: publickey,password
+debug3: start over, passed a different list publickey,password
+debug3: preferred publickey,keyboard-interactive,password
+debug3: authmethod_lookup publickey
+debug3: remaining preferred: keyboard-interactive,password
+debug3: authmethod_is_enabled publickey
+debug1: Next authentication method: publickey
+debug1: Trying private key: /home/komagata/.ssh/identity
+debug3: no such identity: /home/komagata/.ssh/identity
+debug1: Offering public key: /home/komagata/.ssh/id_rsa
+debug3: send_pubkey_test
+debug2: we sent a publickey packet, wait for reply
+debug1: Server accepts key: pkalg ssh-rsa blen 277
+debug2: input_userauth_pk_ok: fp c6:91:7e:02:99:9b:93:51:48:de:7d:83:76:e9:4e:73
+debug3: sign_and_send_pubkey
+debug1: read PEM private key done: type RSA
+debug1: Authentication succeeded (publickey).
+debug1: channel 0: new [client-session]
+debug3: ssh_session2_open: channel_new: 0
+debug2: channel 0: send open
+debug1: Entering interactive session.
+debug2: callback start
+debug2: client_session2_setup: id 0
+debug2: channel 0: request pty-req confirm 0
+debug3: tty_make_modes: ospeed 38400
+debug3: tty_make_modes: ispeed 38400
+debug3: tty_make_modes: 1 3
+debug3: tty_make_modes: 2 28
+debug3: tty_make_modes: 3 127
+debug3: tty_make_modes: 4 21
+debug3: tty_make_modes: 5 4
+debug3: tty_make_modes: 6 0
+debug3: tty_make_modes: 7 0
+debug3: tty_make_modes: 8 17
+debug3: tty_make_modes: 9 19
+debug3: tty_make_modes: 10 26
+debug3: tty_make_modes: 12 18
+debug3: tty_make_modes: 13 23
+debug3: tty_make_modes: 14 22
+debug3: tty_make_modes: 18 15
+debug3: tty_make_modes: 30 0
+debug3: tty_make_modes: 31 0
+debug3: tty_make_modes: 32 0
+debug3: tty_make_modes: 33 0
+debug3: tty_make_modes: 34 0
+debug3: tty_make_modes: 35 0
+debug3: tty_make_modes: 36 1
+debug3: tty_make_modes: 37 0
+debug3: tty_make_modes: 38 1
+debug3: tty_make_modes: 39 0
+debug3: tty_make_modes: 40 0
+debug3: tty_make_modes: 41 0
+debug3: tty_make_modes: 50 1
+debug3: tty_make_modes: 51 1
+debug3: tty_make_modes: 52 0
+debug3: tty_make_modes: 53 1
+debug3: tty_make_modes: 54 1
+debug3: tty_make_modes: 55 1
+debug3: tty_make_modes: 56 0
+debug3: tty_make_modes: 57 0
+debug3: tty_make_modes: 58 0
+debug3: tty_make_modes: 59 1
+debug3: tty_make_modes: 60 1
+debug3: tty_make_modes: 61 1
+debug3: tty_make_modes: 62 0
+debug3: tty_make_modes: 70 1
+debug3: tty_make_modes: 71 0
+debug3: tty_make_modes: 72 1
+debug3: tty_make_modes: 73 0
+debug3: tty_make_modes: 74 0
+debug3: tty_make_modes: 75 0
+debug3: tty_make_modes: 90 1
+debug3: tty_make_modes: 91 1
+debug3: tty_make_modes: 92 0
+debug3: tty_make_modes: 93 0
+debug1: Sending environment.
+debug3: Ignored env USER
+debug3: Ignored env LOGNAME
+debug3: Ignored env HOME
+debug3: Ignored env PATH
+debug3: Ignored env MAIL
+debug3: Ignored env SHELL
+debug3: Ignored env SSH_CLIENT
+debug3: Ignored env SSH_CONNECTION
+debug3: Ignored env SSH_TTY
+debug3: Ignored env TERM
+debug3: Ignored env SHLVL
+debug3: Ignored env PWD
+debug3: Ignored env OLDPWD
+debug1: Sending env LANG = ja_JP.UTF-8
+debug2: channel 0: request env confirm 0
+debug3: Ignored env CVS_RSH
+debug3: Ignored env CVSROOT
+debug3: Ignored env SVN_EDITOR
+debug3: Ignored env EDITOR
+debug3: Ignored env LS_COLORS
+debug3: Ignored env _
+debug2: channel 0: request shell confirm 0
+debug2: fd 3 setting TCP_NODELAY
+debug2: callback done
+debug2: channel 0: open confirm rwindow 0 rmax 32768
+debug2: channel 0: rcvd adjust 131072
+Copyright (c) 1980, 1983, 1986, 1988, 1990, 1991, 1993, 1994
+The Regents of the University of California.  All rights reserved.
+ 
+FreeBSD 4.10-RELEASE-p16 (SAKURA8) #0: Tue Aug  9 10:23:26 JST 2005
+ 
+// Sakura internet rental server service
+ 
+&gt;</code></pre>
+
+<p>行けない時：</p>
+
+<pre><code>dev:~% ssh -vvv komagata@komagata.no-ip.org
+OpenSSH_4.3p2 Debian-3, OpenSSL 0.9.8c 05 Sep 2006
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: Applying options for *
+debug2: ssh_connect: needpriv 0
+debug1: Connecting to komagata.no-ip.org [192.168.0.3] port 22.
+debug1: Connection established.
+debug1: identity file /home/komagata/.ssh/identity type -1
+debug3: Not a RSA1 key file /home/komagata/.ssh/id_rsa.
+debug2: key_type_from_name: unknown key type '-----BEGIN'
+debug3: key_read: missing keytype
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug2: key_type_from_name: unknown key type '-----END'
+debug3: key_read: missing keytype
+debug1: identity file /home/komagata/.ssh/id_rsa type 1
+debug1: identity file /home/komagata/.ssh/id_dsa type -1
+debug1: Remote protocol version 2.0, remote software version OpenSSH_4.3p2 Debian-3
+debug1: match: OpenSSH_4.3p2 Debian-3 pat OpenSSH*
+debug1: Enabling compatibility mode for protocol 2.0
+debug1: Local version string SSH-2.0-OpenSSH_4.3p2 Debian-3
+debug2: fd 3 setting O_NONBLOCK
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug2: kex_parse_kexinit: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+debug2: kex_parse_kexinit: ssh-rsa,ssh-dss
+debug2: kex_parse_kexinit: aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour128,arcfour256,arcfour,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se,aes128-ctr,aes192-ctr,aes256-ctr
+debug2: kex_parse_kexinit: aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour128,arcfour256,arcfour,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se,aes128-ctr,aes192-ctr,aes256-ctr
+debug2: kex_parse_kexinit: hmac-md5,hmac-sha1,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: hmac-md5,hmac-sha1,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib
+debug2: kex_parse_kexinit: none,zlib@openssh.com,zlib
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: first_kex_follows 0 
+debug2: kex_parse_kexinit: reserved 0 
+debug2: kex_parse_kexinit: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+debug2: kex_parse_kexinit: ssh-rsa,ssh-dss
+debug2: kex_parse_kexinit: aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour128,arcfour256,arcfour,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se,aes128-ctr,aes192-ctr,aes256-ctr
+debug2: kex_parse_kexinit: aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,arcfour128,arcfour256,arcfour,aes192-cbc,aes256-cbc,rijndael-cbc@lysator.liu.se,aes128-ctr,aes192-ctr,aes256-ctr
+debug2: kex_parse_kexinit: hmac-md5,hmac-sha1,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: hmac-md5,hmac-sha1,hmac-ripemd160,hmac-ripemd160@openssh.com,hmac-sha1-96,hmac-md5-96
+debug2: kex_parse_kexinit: none,zlib@openssh.com
+debug2: kex_parse_kexinit: none,zlib@openssh.com
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: 
+debug2: kex_parse_kexinit: first_kex_follows 0 
+debug2: kex_parse_kexinit: reserved 0 
+debug2: mac_init: found hmac-md5
+debug1: kex: server-&gt;client aes128-cbc hmac-md5 none
+debug2: mac_init: found hmac-md5
+debug1: kex: client-&gt;server aes128-cbc hmac-md5 none
+debug1: SSH2_MSG_KEX_DH_GEX_REQUEST(1024&lt;1024&lt;8192) sent
+debug1: expecting SSH2_MSG_KEX_DH_GEX_GROUP
+debug2: dh_gen_key: priv key bits set: 128/256
+debug2: bits set: 507/1024
+debug1: SSH2_MSG_KEX_DH_GEX_INIT sent
+debug1: expecting SSH2_MSG_KEX_DH_GEX_REPLY
+debug3: check_host_in_hostfile: filename /home/komagata/.ssh/known_hosts
+debug3: check_host_in_hostfile: match line 1
+debug3: check_host_in_hostfile: filename /home/komagata/.ssh/known_hosts
+debug3: check_host_in_hostfile: match line 2
+debug1: Host 'komagata.no-ip.org' is known and matches the RSA host key.
+debug1: Found key in /home/komagata/.ssh/known_hosts:1
+debug2: bits set: 536/1024
+debug1: ssh_rsa_verify: signature correct
+debug2: kex_derive_keys
+debug2: set_newkeys: mode 1
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug2: set_newkeys: mode 0
+debug1: SSH2_MSG_NEWKEYS received
+debug1: SSH2_MSG_SERVICE_REQUEST sent
+debug2: service_accept: ssh-userauth
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug2: key: /home/komagata/.ssh/identity ((nil))
+debug2: key: /home/komagata/.ssh/id_rsa (0x80953e8)
+debug2: key: /home/komagata/.ssh/id_dsa ((nil))
+debug1: Authentications that can continue: publickey,password
+debug3: start over, passed a different list publickey,password
+debug3: preferred publickey,keyboard-interactive,password
+debug3: authmethod_lookup publickey
+debug3: remaining preferred: keyboard-interactive,password
+debug3: authmethod_is_enabled publickey
+debug1: Next authentication method: publickey
+debug1: Trying private key: /home/komagata/.ssh/identity
+debug3: no such identity: /home/komagata/.ssh/identity
+debug1: Offering public key: /home/komagata/.ssh/id_rsa
+debug3: send_pubkey_test
+debug2: we sent a publickey packet, wait for reply
+debug1: Authentications that can continue: publickey,password
+debug1: Trying private key: /home/komagata/.ssh/id_dsa
+debug3: no such identity: /home/komagata/.ssh/id_dsa
+debug2: we did not send a packet, disable method
+debug3: authmethod_lookup password
+debug3: remaining preferred: ,password
+debug3: authmethod_is_enabled password
+debug1: Next authentication method: password
+komagata@komagata.no-ip.org's password:</code></pre>
+
+<p>“ファイルのパーミションのせいで認証できない”というのが典型的間違い所らしいけど、それじゃあない。</p>
+
+<pre><code>chmod 700 $HOME/.ssh
+chmod 600 $HOME/.ssh/authorized_keys</code></pre>
+
+<p>ssh -vだと</p>
+
+<p>「RSAで認証しようとしました。DSAで認証しようとしました。駄目なのでパスワード認証します。」</p>
+
+<p>ってことしか分からなかったのでssh -vvvにしたんですが、意味が分かりません。</p>
+
+<p>今日ここまでっ！！！</p>
+
+<p>（追記）komagata.no-ip.orgのsshd_config：</p>
+
+<pre><code># Package generated configuration file
+# See the sshd(8) manpage for details
+ 
+# What ports, IPs and protocols we listen for
+Port 22
+# Use these options to restrict which interfaces/protocols sshd will bind to
+#ListenAddress ::
+#ListenAddress 0.0.0.0
+Protocol 2
+# HostKeys for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+#Privilege Separation is turned on for security
+UsePrivilegeSeparation yes
+ 
+# Lifetime and size of ephemeral version 1 server key
+KeyRegenerationInterval 3600
+ServerKeyBits 768
+ 
+# Logging
+SyslogFacility AUTH
+LogLevel INFO
+ 
+# Authentication:
+LoginGraceTime 120
+PermitRootLogin no
+StrictModes yes
+ 
+RSAAuthentication yes
+PubkeyAuthentication yes
+#AuthorizedKeysFile     %h/.ssh/authorized_keys
+ 
+# Don't read the user's ~/.rhosts and ~/.shosts files
+IgnoreRhosts yes
+# For this to work you will also need host keys in /etc/ssh_known_hosts
+RhostsRSAAuthentication no
+# similar for protocol version 2
+HostbasedAuthentication no
+# Uncomment if you don't trust ~/.ssh/known_hosts for RhostsRSAAuthentication
+#IgnoreUserKnownHosts yes
+ 
+# To enable empty passwords, change to yes (NOT RECOMMENDED)
+PermitEmptyPasswords no
+ 
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication no
+ 
+# Change to no to disable tunnelled clear text passwords
+#PasswordAuthentication yes
+ 
+# Kerberos options
+#KerberosAuthentication no
+#KerberosGetAFSToken no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+ 
+# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+ 
+X11Forwarding yes
+X11DisplayOffset 10
+PrintMotd no
+PrintLastLog yes
+KeepAlive yes
+#UseLogin no
+ 
+#MaxStartups 10:30:60
+#Banner /etc/issue.net
+ 
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+ 
+Subsystem sftp /usr/lib/openssh/sftp-server
+ 
+UsePAM yes</code></pre>]]>
+
+</content>
+</entry>
+<entry>
+<title>laptop-detect</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/laptopdetect.html" />
+<modified>2006-09-26T17:36:52Z</modified>
+<issued>2006-09-26T17:00:55Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2076</id>
+<created>2006-09-26T17:00:55Z</created>
+<summary type="text/plain">p0t: coLinuxおちる aptitude upgradeしようとしたらl...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>unix</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<blockquote><a title="p0t: coLinuxおちる" href="http://p0t.jp/mt/archives/2006/09/colinux_6.html">p0t: coLinuxおちる</a>
+
+<p>aptitude upgradeしようとしたらlibx11-6のところで必ず落ちる。</blockquote></p>
+
+<p>この問題。</p>
+
+<blockquote>preinst で raptop-detect を実行するところで落ちるので、raptop-detect をダミーに置き換えれば大丈夫だと思います。
+以前私もはまりました。
+
+<p>Posted by: odz | 2006年09月26日 23:07</blockquote></p>
+
+<p>odzさんの情報で解決しました。ありがとうございます！<br />
+libx11-6のpreinstじゃなくてpostinstの方みたいでした。</p>
+
+<pre><code>dev:~% diff /var/lib/dpkg/info/libx11-6.postinst.org /var/lib/dpkg/info/libx11-6.postinst
+77,78c77,78
+&lt; if [ -n "$(which laptop-detect)" ]; then
+&lt;     if laptop-detect &gt;/dev/null; then
+---
+&gt; #if [ -n "$(which laptop-detect)" ]; then
+&gt; #    if laptop-detect &gt;/dev/null; then
+80,81c80,81
+&lt;     fi
+&lt; fi
+---
+&gt; #    fi
+&gt; #fi</code></pre>
+
+<p>laptop-detectを適当にコメントアウトしたら行けた！</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>情報が無い</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/post_482.html" />
+<modified>2006-09-26T16:06:23Z</modified>
+<issued>2006-09-26T15:59:45Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2075</id>
+<created>2006-09-26T15:59:45Z</created>
+<summary type="text/plain"> 世の中にはGoogleには引っかからないけど重要なものが沢山あると思います。...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>book</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<p><a href="http://www.flickr.com/photos/komagata/253365730/" title="Photo Sharing"><img src="http://static.flickr.com/85/253365730_5e427b7428_m.jpg" width="240" height="207" alt="charmy_homy" /></a></p>
+
+<p>世の中にはGoogleには引っかからないけど重要なものが沢山あると思います。</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>coLinuxおちる</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/colinux_6.html" />
+<modified>2006-09-26T09:36:28Z</modified>
+<issued>2006-09-26T09:18:09Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2074</id>
+<created>2006-09-26T09:18:09Z</created>
+<summary type="text/plain">dev:~% sudo dpkg --configure -a libx11-6...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>unix</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<pre><code>dev:~% sudo dpkg --configure -a
+libx11-6 (1.0.0-9) を設定しています ...</code></pre>
+
+<p>aptitude upgradeしようとしたらlibx11-6のところで必ず落ちる。</p>
+
+<blockquote><a title="[coLinux] apt-get install x-window-systemエラー Kawa.net Blog（ゆうすけブログ）/ウェブリブログ" href="http://kawa.at.webry.info/200511/article_10.html">[coLinux] apt-get install x-window-systemエラー Kawa.net Blog（ゆうすけブログ）/ウェブリブログ</a>
+
+<p>libx11-6 libxt6インストール時に発生するエラー：</p>
+
+<p>/initrd/bin/ln が利用されているのが原因。<br />
+/bin/ln を使うように、パスを変更する。</blockquote></p>
+
+<p>ここの話とは違うみたいで直らなかった。困ったな。</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>coLinux解決</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/colinux_5.html" />
+<modified>2006-09-25T19:37:46Z</modified>
+<issued>2006-09-25T19:19:54Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2073</id>
+<created>2006-09-25T19:19:54Z</created>
+<summary type="text/plain">coLinuxやっと設定できました。 謎（ではないんだろうけど）の“インターネッ...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>unix</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<p>coLinuxやっと設定できました。</p>
+
+<p>謎（ではないんだろうけど）の“インターネットゲートウェイ”って奴は“ネットワーク接続”の“詳細設定” > “オプション ネットワーク コンポーネント”の“ネットワーク サービス”の中の“インターネット ゲートウェイ デバイス検出とクライアントの制御”って奴を外したら無くなってくれました。</p>
+
+<p><a href="http://www.flickr.com/photos/komagata/252633462/" title="Photo Sharing"><img src="http://static.flickr.com/92/252633462_01391d071e_m.jpg" width="240" height="150" alt="network_component" /></a></p>
+
+<p>その後はTAP + NATで問題無く設定完了。<br />
+100%ハマるであろう未来の自分の為にメモを残しとこう。</p>
+
+<ul>
+<li>無線LAN[DHCP]</li>
+<li>TAP[192.168.1.1]（デフォルトゲートウェイ、DNSは空）</li>
+<li><a href="http://saikyoline.jp/wiki/index.php?%A5%E1%A5%E2%2FcoLinux%CD%D1RootFS%A5%A4%A5%E1%A1%BC%A5%B8%A4%F2Debian%A4%CEISO%A5%A4%A5%E1%A1%BC%A5%B8%A4%AB%A4%E9%BA%EE%C0%AE">メモ/coLinux用RootFSイメージをDebianのISOイメージから作成</a>を実行。</li>
+<li>ネットワーク接続で落ちた場合coLinuxを上書きでいいからもう一回入れないと駄目（理由は不明）</li>
+<li>上記ネットワーク設定だとDHCPでは駄目なので手動で設定する。</li>
+<li>coLinux[192.168.1.40]、resolve.conf[192.168.0.1]</li>
+</ul>]]>
+
+</content>
+</entry>
+<entry>
+<title>はまり中</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/post_481.html" />
+<modified>2006-09-25T13:51:35Z</modified>
+<issued>2006-09-25T13:40:13Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2072</id>
+<created>2006-09-25T13:40:13Z</created>
+<summary type="text/plain">coLinuxの設定ハマり中。 TAP + NATにする予定です。普段は無線を使...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>unix</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<p>coLinuxの設定ハマり中。</p>
+
+<p>TAP + NATにする予定です。普段は無線を使うので"ワイヤレス ネットーワーク接続”で"インターネット接続の共有” -> "ローカルエリア接続 2（TAPの奴）”にすると、</p>
+
+<p><a href="http://www.flickr.com/photos/komagata/252365132/" title="Photo Sharing"><img src="http://static.flickr.com/109/252365132_afc47cc440_o.png" width="400" height="149" alt="con_share_failure" /></a></p>
+
+<p>共有できない。</p>
+
+<p>家のLANの構成はこんな感じ。</p>
+
+<ul>
+<li>ルータ（192.168.0.1）</li>
+<li>ノートPC（DHCP）</li>
+<li>自宅サーバ（192.168.0.3）</li>
+</ul>
+
+<p>なんで駄目なんだろう。<br />
+そしてやはり、</p>
+
+<p><a href="http://www.flickr.com/photos/komagata/252365131/" title="Photo Sharing"><img src="http://static.flickr.com/104/252365131_59082f17e4_m.jpg" width="240" height="167" alt="internet_con" /></a></p>
+
+<p>コレの意味がわからん…。</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>毎回はまる</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/post_480.html" />
+<modified>2006-09-24T23:00:40Z</modified>
+<issued>2006-09-24T22:43:50Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2071</id>
+<created>2006-09-24T22:43:50Z</created>
+<summary type="text/plain">coLinux、何度も何度も入れてるハズなのに毎回何故かハマる。多分全然学習して...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>unix</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<p>coLinux、何度も何度も入れてるハズなのに毎回何故かハマる。多分全然学習してない。</p>
+
+<p>ブリッジとNATで（何故かは忘れたが）確かNATの方が都合が良かったハズと思って設定してみるがcoLinuxから外へ行けない。多分下記のどれかが関係していて、おれがそのどれもハッキリ理解してないからだと思う。</p>
+
+<ul>
+<li>有線LANと無線LANがある（有線LANのみの環境だとハマッた覚えがない）</li>
+<li>Windows XPのネットワーク接続に現れる"インターネット接続 （インターネットゲートウェイ）”の存在が良く分からない（消せない）</li>
+<li>coLinuxがちょっと新しい（0.6.4）</li>
+</ul>
+
+<p>ブリッジ接続なら行けるんだけど、今度は下記にある「素からのインストール」をやろうとすると、</p>
+
+<p>8. ネットワークを設定する。</p>
+
+<p>の所でcoLinuxが落ちる。</p>
+
+<p><a href="http://saikyoline.jp/wiki/index.php?%A5%E1%A5%E2%2FcoLinux%CD%D1RootFS%A5%A4%A5%E1%A1%BC%A5%B8%A4%F2Debian%A4%CEISO%A5%A4%A5%E1%A1%BC%A5%B8%A4%AB%A4%E9%BA%EE%C0%AE">メモ/coLinux用RootFSイメージをDebianのISOイメージから作成 - SaikyoLine.jp</a></p>
+
+<p>一晩ハマって心が折れたので寝て起きてから考えよ。</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>Bloglines mobile</title>
+<link rel="alternate" type="text/html" href="http://p0t.jp/mt/archives/2006/09/bloglines_mobil.html" />
+<modified>2006-09-24T16:02:25Z</modified>
+<issued>2006-09-24T16:00:01Z</issued>
+<id>tag:p0t.jp,2006:/mt/1.2070</id>
+<created>2006-09-24T16:00:01Z</created>
+<summary type="text/plain"> 僕らのBloglinesにmobile版がっ！...</summary>
+<author>
+<name>komagata</name>
+<url>http://p0t.jp</url>
+<email>komagata@p0t.jp</email>
+</author>
+<dc:subject>net</dc:subject>
+<content type="text/html" xml:lang="ja" xml:base="http://p0t.jp/mt/">
+<![CDATA[<p><a href="http://www.flickr.com/photos/komagata/251395899/" title="Photo Sharing"><img src="http://static.flickr.com/98/251395899_fc4d2c2eae_m.jpg" width="190" height="240" alt="bloglines_mobile" /></a></p>
+
+<p>僕らのBloglinesにmobile版がっ！</p>]]>
+
+</content>
+</entry>
+
+</feed>

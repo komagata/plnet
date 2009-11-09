@@ -1,0 +1,33 @@
+#plnet_widget_footprints {
+  text-align: left;
+  font-size: 12px;
+  width: 200px;
+  padding: 3px;
+}
+
+#plnet_widget_footprints .header {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+#plnet_widget_footprints .footer {
+  text-align: center;
+  margin-top: 6px;
+}
+
+#plnet_widget_footprints ul {
+  margin: 0;
+  padding: 0;
+}
+
+#plnet_widget_footprints ul li {
+  list-style-type: none;
+  margin-bottom: 3px;
+}
+
+#plnet_widget_footprints ul li img {
+  border: solid 1px #000;
+  vertical-align: middle;
+  margin-right: 3px;
+}

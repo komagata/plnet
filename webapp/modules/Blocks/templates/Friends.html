@@ -1,0 +1,10 @@
+<h3>{'friends'|msg}({$friends_length})</h3>
+<ul>
+{foreach from=$friends item=friend}
+  <li>
+    <a href="{$friend.weblog}"><img src="{$friend.img}" width="35" height="35" /></a>
+    <a href="{$friend.weblog}">{$friend.nick}</a>
+  </li>
+{/foreach}
+<p><a href="/{$account}/friends">{'description'|msg}</a></p>
+</ul>

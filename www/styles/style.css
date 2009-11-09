@@ -1,0 +1,75 @@
+/* body */
+body {
+  margin: 0; padding: 0;
+  font-family: Verdan, "Trebuchet MS", Osaka;
+}
+
+/* link */
+
+/* List module */
+/*
+dl {margin: 0 0 1em 0;}
+dt {}
+dd {}
+ul,ol {margin: 0 0 0.9em 0;}
+dd>ul,dd>ol {margin: 0;}
+ul li,ol li {margin-left: 1.5em;}
+li li,li p,li pre,li dt,li dd,
+dd li,dd p,dd pre,dd dt,
+dd dd {font-size:100%;}
+li ul,li ol,li dl,li p,
+dd ul,dd ol,dd dl,dd p {margin: 0.4em 8px;}
+*/
+
+/* button */
+.button {
+  cursor: pointer;
+}
+
+.icon {
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+.favicon {
+  width: 16px;
+  height: 16px;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+/* input */
+img {
+  border: 0px;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+}
+
+/* id */
+
+/* class */
+.error {
+  color: #f00;
+}
+
+.submit {
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #F57900;
+  background: transparent url("/images/submit_bg.gif") repeat-x top;
+}
+
+.center {
+  text-align: center;
+}
+
+.input {
+  padding: 0.2em;
+}
+
+#footer {
+  line-height: 160%;
+}

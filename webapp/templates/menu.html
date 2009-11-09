@@ -1,0 +1,25 @@
+  <div id="menu">
+    <ul>
+      <li{if $request_sig == 'MyContent_Index'} class="current"{/if}>
+        <a href="setting/feed"><img src="images/tab03.gif" /><br />
+        フィード設定</a>
+      </li>
+      <li{if $request_sig == 'Site_Update'} class="current"{/if}>
+        <a href="setting/site"><img src="images/tab04.gif" /><br />
+        サイト設定</a>
+      </li>
+      <li{if $request_sig == 'Design_Update'} class="current"{/if}>
+        <a href="setting/design"><img src="images/tab05.gif" /><br />
+        デザイン設定<br /></a>
+      </li>
+      <li{if $request_sig == 'Member_Update'} class="current"{/if}>
+        <a href="setting/user"><img src="images/tab02.gif" /><br />
+        アカウント設定</a>
+      </li>
+      <li{if $request_sig == 'MyContent_Index'} class="current"{/if}>
+        <a href="{$member->account}/"><img src="images/tab06.gif" /><br />
+        サイトを確認する</a>
+      </li>
+    </ul>
+  </div>
+

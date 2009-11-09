@@ -1,0 +1,125 @@
+body {
+/*
+  background: url("http://p0t.jp/images/cloud.png") repeat-x;
+*/
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;
+  font:x-small/1.5em "Trebuchet MS",Verdana,Arial,Sans-serif;
+  font-size/* */:/**/small;
+  font-size: /**/small;
+}
+
+#header {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#header h1 {
+  font-size: 72px;
+}
+
+#container {
+  width: 740px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#content {
+  margin-top: 20px;
+  background: #f00;
+}
+
+#alpha {
+  width: 480px;
+  float: left;
+  line-height: 1.5em;
+}
+
+#result {
+  padding: 12px;
+}
+
+#beta {
+  margin: 0; padding: 0;
+  width: 260px;
+  text-align: left;
+}
+
+#beta ul {
+  margin: 5px 0;
+}
+
+#beta li {
+  margin: 0;
+  list-style-type: none;
+  padding: 3px 3px 3px 13px;
+}
+
+#footer {
+  clear:both;
+  margin: 0;
+  padding:15px 0 0;
+}
+
+/**************************/
+
+
+#header.nifty {
+    width: 740px;
+    background: #eee;
+    margin-bottom: 10px;
+}
+
+#alpha.nifty {
+    width: 480px;
+    background: #eee;
+    margin-bottom: 10px;
+}
+
+#header b.rtop,
+#header b.rbottom, 
+#alpha b.rtop,
+#alpha b.rbottom {
+    display: block;
+    background: #FFF;
+}
+
+#header b.rtop b,
+#header b.rbottom b, 
+#alpha b.rtop b,
+#alpha b.rbottom b {
+    display: block;
+    height: 1px;
+    overflow: hidden;
+    background: #eee;
+}
+
+#header b.r1, 
+#alpha b.r1 {
+    margin: 0 5px;
+}
+
+#header b.r2, 
+#alpha b.r2 {
+    margin: 0 3px;
+}
+
+#header b.r3, 
+#alpha b.r3 {
+    margin: 0 2px;
+}
+
+#header b.rtop b.r4,
+#header b.rbottom b.r4, 
+#alpha b.rtop b.r4,
+#alpha b.rbottom b.r4 {
+    margin: 0 1px;
+    height: 2px;
+}
+
+#beta b.rtop,
+#beta b.rbottom {
+    display: none;
+}
+/******************************/

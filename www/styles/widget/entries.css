@@ -1,0 +1,37 @@
+#plnet_widget_entries {
+  font-size: 10px;
+}
+
+#plnet_widget_entries .header {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+#plnet_widget_entries .header img {
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+#plnet_widget_entries ul {
+  margin: 0;
+  padding: 0;
+}
+
+#plnet_widget_entries ul li {
+  list-style-type: none;
+  margin-bottom: 6px;
+}
+
+#plnet_widget_entries .footer {
+  text-align: right;
+}
+
+#plnet_widget_entries .favicon {
+  vertical-align: middle;
+  margin-right: 3px;
+}
+
+#plnet_widget_entries img {
+  border: 0;
+}

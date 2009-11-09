@@ -1,0 +1,60 @@
+/* link */
+#panel a:link {
+   color:#f57900;
+   text-decoration: none;
+ }
+#panel a:visited {
+   color:#f57900;
+   text-decoration: none;
+ }
+#panel a:hover {
+   color:#f57900;
+   text-decoration: underline;
+}
+/*********/
+
+#information {
+    margin: 1em 0;
+}
+
+#panel {
+    position: relative;
+}
+
+#panel img {
+    margin: 4px 0 4px 0;
+}
+#panel_title {
+    float: left;
+    width: 30%;
+    vertical-align: top;
+}
+#panel_detail {
+    float: right;
+    width: 70%;
+    vertical-align: top;
+}
+#panel1 {
+    float: left;
+    width: 50%
+}
+#panel2 {
+    float: right;
+    width: 48%
+}
+#panel3 {
+    float: left;
+    width: 50%
+}
+#panel4 {
+    float: right;
+    width: 48%
+}
+#panel5 {
+    float: left;
+    width: 50%
+}
+#panel6 {
+    float: right;
+    width: 48%
+}

@@ -1,0 +1,41 @@
+<script type="text/javascript">{literal}
+function checked(id) {
+  $('design_' + id).checked = true;
+  document.getElementById('design_form').submit();
+}
+{/literal}</script>
+<h2>{'design'|msg}</h2>
+{if $request->hasParameter('changed')}
+<p><img src="images/message.gif" class="icon" />{'update your design'|msg}</p>
+{elseif $request->hasparameter('changed_custom')}
+<p><img src="images/message.gif" class="icon" />{'update your customized design'|msg}</p>
+{/if}
+<form id="design_form" name="design_form" action="/setting/design" method="post">
+<input type="hidden" name="changed" value="true" />
+
+<table>
+{foreach from=$designs item=design name=design}
+  {if $smarty.foreach.design.iteration % 3 == 1}
+  <tr height="200px">
+  {/if}
+    <td width="200px" style="vertical-align:bottom">
+      <p><label class="design_name button center" onclick="checked({$design->id})">
+         <img class="design_thumbnail" src="images/thumbnail/{$design->thumbnail}" /><br />
+        <input type="radio" name="design_id" id="design_{$design->id}" value="{$design->id}" {if $member->design_id == $design->id} checked="true"{/if} />
+          {$design->name}<br />
+          (designed by {$design->author})
+      </label></p>
+    </td>
+  {if $smarty.foreach.design.iteration % 3 == 0}
+  </tr>
+  {/if}
+{/foreach}
+</table>
+</form>
+<br />
+
+<h2>{'original design'|msg}</h2>
+<form name="custom_design" action="setting/design" method="post">
+<textarea name="css" id="css" class="textarea">{if isset($custom_template->template)}{$custom_template->template}{else}{$default_css}{/if}</textarea>
+<p><input type="submit" name="custom_design_submit" id="custom_design_submit" class="submit button" value="{'update'|msg}" /></p>
+</form>

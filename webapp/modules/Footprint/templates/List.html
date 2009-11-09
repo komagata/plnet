@@ -1,0 +1,12 @@
+<h2>{'footprint'|msg}</h2>
+<p>{'blog widget for the footprint is here'|msg}</p>
+<table id="footprints">
+{foreach from=$pager->getPageData() item=footprint}
+  <tr>
+    <td><a href="{$footprint.link}"><img src="{$footprint.profile_icon}" class="profile_icon" /></a></td>
+    <td><a href="{$footprint.link}">{$footprint.name}</a></td>
+    <td>{$footprint.formated_time}</td>
+  </tr>
+{/foreach}
+</table>
+<div class="pager">{$pager->slider}</div>

@@ -1,0 +1,111 @@
+RewriteEngine on
+
+# mixi
+RewriteRule ^mixi_diary/([0-9]+)$ mixi_diary.fcgi?user_id=$1 [L]
+
+RewriteRule ^register$ index.php?m=Member&a=Register [L]
+RewriteRule ^login$ index.php?m=Auth&a=Login [L]
+RewriteRule ^logout$ index.php?m=Logout&a=Logout [L]
+RewriteRule ^feedback$ index.php?m=Top&a=Feedback [L,QSA]
+RewriteRule ^feedback/json$ index.php?m=API&a=Feedbacks&format=json [L,QSA]
+RewriteRule ^feedback/rss$ index.php?m=API&a=Feedbacks&format=rss10 [L,QSA]
+RewriteRule ^feedback/rss2$ index.php?m=API&a=Feedbacks&format=rss20 [L,QSA]
+RewriteRule ^about$ index.php?m=Top&a=About [L,QSA]
+RewriteRule ^tos$ index.php?m=Top&a=Tos [L]
+RewriteRule ^services$ index.php?m=Content&a=List [L,QSA]
+RewriteRule ^tags/?$ index.php?m=Plnet&a=Tags [L,QSA]
+RewriteRule ^tag/(.+)$ index.php?m=Plnet&a=Tag&tag=$1 [L,QSA]
+RewriteRule ^developer$ index.php?m=Top&a=Developer [L,QSA]
+RewriteRule ^api/subscribe$ index.php?m=MyContent&a=AddFeed&redirect=true [L,QSA]
+RewriteRule ^api/content$ index.php?m=API&a=Content [L,QSA]
+RewriteRule ^api/contents$ index.php?m=API&a=Contents [L,QSA]
+RewriteRule ^api/content_categories$ index.php?m=API&a=ContentCategories [L,QSA]
+RewriteRule ^api/feedback$ index.php?m=API&a=Feedback [L,QSA]
+RewriteRule ^api/feedbacks$ index.php?m=API&a=Feedbacks&format=json [L,QSA]
+RewriteRule ^api/site$ index.php?m=API&a=Site [L,QSA]
+RewriteRule ^api/foaf$ index.php?m=API&a=Foaf [L,QSA]
+RewriteRule ^api/foafs$ index.php?m=API&a=Foafs [L,QSA]
+RewriteRule ^api/friends$ index.php?m=API&a=Friends [L,QSA]
+RewriteRule ^api/feed$ index.php?m=MyContent&a=AddFeed [L,QSA]
+RewriteRule ^api/feeds/(.+)$ index.php?m=API&a=Feeds&account=$1 [L,QSA]
+RewriteRule ^tags/?$ index.php?m=Plnet&a=Tag [L,QSA]
+RewriteRule ^list/rss$ index.php?m=Plnet&a=List&format=rss10 [L]
+RewriteRule ^list/rss2$ index.php?m=Plnet&a=List&format=rss20 [L]
+RewriteRule ^list/?$ index.php?m=Plnet&a=List [L,QSA]
+RewriteRule ^list/user/content_category/(.+)/$ index.php?m=Member&a=List&cc_name=$1 [L,QSA]
+RewriteRule ^setting$ index.php?m=Setting&a=Index [L]
+RewriteRule ^setting/user$ index.php?m=Member&a=Update [L]
+RewriteRule ^setting/user/resign$ index.php?m=Member&a=Remove [L,QSA]
+RewriteRule ^setting/user/resigned$ index.php?m=Member&a=Removed [L]
+RewriteRule ^setting/user/changed$ index.php?m=Member&a=Update&changed=true [L]
+RewriteRule ^setting/feed$ index.php?m=MyContent&a=Index [L,QSA]
+RewriteRule ^setting/friend$ index.php?m=Friend&a=Index [L,QSA]
+RewriteRule ^setting/site$ index.php?m=Site&a=Update [L]
+RewriteRule ^setting/site/changed$ index.php?m=Site&a=Update&changed=true [L]
+RewriteRule ^setting/design$ index.php?m=Design&a=Update [L]
+RewriteRule ^setting/design/changed$ index.php?m=Design&a=Update&changed=true [L]
+RewriteRule ^setting/design/changed_custom$ index.php?m=Design&a=Update&changed_custom=true [L]
+RewriteRule ^setting/footprint/?$ index.php?m=Footprint&a=List [L,QSA]
+RewriteRule ^activate/(.*)$ index.php?m=Member&a=Activate&key=$1 [L]
+RewriteRule ^sitemap$ index.php?m=SiteMap&a=Index [L]
+RewriteRule ^widget/entries.js$ index.php?m=Widget&a=Entries [L,QSA]
+RewriteRule ^widget/footprints.js$ index.php?m=Widget&a=Footprints [L,QSA]
+
+RewriteRule ^([0-9a-zA-Z_-]+)\/?$ index.php?m=Glue&a=Index&account=$1 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/profile$ index.php?m=Glue&a=Index&account=$1&display=profile [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/friends$ index.php?m=Glue&a=Index&account=$1&display=friends [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/category/(.+)$ index.php?m=Glue&a=Index&account=$1&display=category&category_id=$2 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/foaf.rdf$ index.php?m=Blocks&a=ProfileDescription&account=$1&format=foaf [L,QSA]
+RewriteRule ^page_not_found$ index.php?m=Default&a=PageNotFound [L,QSA]
+
+# sitemap
+RewriteRule ^([0-9a-zA-Z_-]+)/sitemap$ index.php?m=SiteMap&a=SiteMap&account=$1 [L]
+
+# archive
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9]{4})/([0-9]{2})/([0-9]{2})/$ index.php?m=Glue&a=Index&account=$1&year=$2&month=$3&day=$4 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9]{4})/([0-9]{2})/$ index.php?m=Glue&a=Index&account=$1&year=$2&month=$3 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9]{4})/([0-9]{2})/([0-9]{2})/rss$ index.php?m=Blocks&a=Entries&account=$1&year=$2&month=$3&day=$4&format=rss10 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9]{4})/([0-9]{2})/([0-9]{2})/rss2$ index.php?m=Blocks&a=Entries&account=$1&year=$2&month=$3&day=$4&format=rss20 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9]{4})/([0-9]{2})/rss$ index.php?m=Blocks&a=Entries&account=$1&year=$2&month=$3&format=rss10 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9]{4})/([0-9]{2})/rss2$ index.php?m=Blocks&a=Entries&account=$1&year=$2&month=$3&format=rss20 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9]+)$ index.php?m=Glue&a=Index&account=$1&entry_id=$2 [L]
+
+RewriteRule ^([0-9a-zA-Z_-]+)/addfeed/(.+)$ index.php?m=MyContent&a=Create&account=$1&uri=$2 [L,QSA]
+
+# search
+RewriteRule ^([0-9a-zA-Z_-]+)/search/(.*)/rss$ index.php?m=Blocks&a=Entries&account=$1&q=$2&format=rss10 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/search/(.*)/rss2$ index.php?m=Blocks&a=Entries&account=$1&q=$2&format=rss20 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/search/(.*)$ index.php?m=Glue&a=Index&account=$1&q=$2 [L,QSA]
+
+# tag
+RewriteRule ^([0-9a-zA-Z_-]+)/tag/(.+)/rss$ index.php?m=Blocks&a=Entries&account=$1&tag=$2&format=rss10 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/tag/(.+)/rss2$ index.php?m=Feed&a=Tags&account=$1&tag=$2&format=rss20 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/tag/(.+)/json$ index.php?m=Feed&a=Tags&account=$1&tag=$2&format=json [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/tag/(.+)$ index.php?m=Glue&a=Index&account=$1&tag=$2 [L,QSA]
+
+# source
+RewriteRule ^([0-9a-zA-Z_-]+)/source/(.+)/rss$ index.php?m=Blocks&a=Entries&account=$1&source_id=$2&format=rss10 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/source/(.+)/rss2$ index.php?m=Blocks&a=Entries&account=$1&source_id=$2&format=rss20 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/source/(.+)$ index.php?m=Glue&a=Index&account=$1&source_id=$2 [L,QSA]
+
+# user top
+RewriteRule ^([0-9a-zA-Z_-]+)/rss$ index.php?m=Blocks&a=Entries&account=$1&format=rss10 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/rss2$ index.php?m=Blocks&a=Entries&account=$1&format=rss20 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/atom03$ index.php?m=Feed&a=Feed&format=atom03&account=$1 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/atom10$ index.php?m=Feed&a=Feed&format=atom10&account=$1 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/opml$ index.php?m=Blocks&a=Sources&account=$1&format=opml11 [L]
+
+# json
+RewriteRule ^([0-9a-zA-Z_-]+)/json/entries$ index.php?m=Feed&a=Entries&account=$1 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/json/sources$ index.php?m=Feed&a=Sources&account=$1 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/json/tags$ index.php?m=Feed&a=Tags&account=$1 [L,QSA]
+RewriteRule ^([0-9a-zA-Z_-]+)/json$ index.php?m=Feed&a=Feed&format=json&account=$1 [L,QSA]
+
+# custom css
+RewriteRule ^styles/([0-9a-zA-Z_-]+)/custom.css$ index.php?m=Glue&a=CSS&account=$1 [L]
+
+# locale
+RewriteRule ^scripts/locale.js$ index.php?m=Blocks&a=Locale [L,QSA]
+
+# member
+RewriteRule ^scripts/Plnet/Member.js$ index.php?m=Blocks&a=Member [L,QSA]

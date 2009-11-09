@@ -1,0 +1,187 @@
+@import "design/base.css";
+
+body {
+  font-size: small;
+  margin: 0;
+  padding: 0;
+  background: #FFF;
+  font-family: Helvetica, Arial, Sans-serif;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  padding-top: 2px;
+}
+
+body #container {
+}
+
+body #header {
+  display: block;
+  margin: 1em;
+  padding: 4px 0 0 0;
+}
+
+body #content {
+  display: block;
+  margin: 0;
+}
+
+body #alpha {
+  display: block;
+  margin: 1em;
+}
+
+body #header h1 {
+  font-size: large;
+  line-height: 1em;
+  display: inline;
+  height: 32px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body #header h1 a {
+  width: 106px;
+  height: 32px;
+  color: #F30;
+}
+
+body #header h2 {
+  font-size: small;
+  display: inline;
+  color: #FC0;
+}
+div.entry {
+  display: block;
+  line-height: 1.5em;
+}
+
+div.entry div.entry_description {
+  display: block;
+  font-size: x-small;
+  margin: 0;
+  padding: 0;
+}
+
+div.entry div.entry_description * {
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+div.entry_footer {
+  display: block;
+  color: #999;
+  font-size: x-small;
+  margin: 0 0 4px 0;
+}
+
+div.entry_footer .entry_author,
+div.entry_footer .entry_date,
+div.entry_footer .entry_source,
+div.entry_footer .entry_comment,
+div.entry_footer .entry_tag {
+  display: inline;
+}
+
+div.entry_footer .entry_comment,
+div.entry_footer .entry_tag,
+div.entry_footer .entry_source {
+  margin: 0 1em 0 0;
+}
+
+div.entry_footer .entry_comment {
+  visibility: hidden;
+}
+
+div.entry_footer .entry_comment a {
+  visibility: visible;
+}
+
+div.entry_footer .entry_comment a {
+  color: #F30;
+}
+
+div.entry_footer .entry_tag a {
+  color: #F60;
+}
+
+div.entry_footer .entry_source a {
+  color: #FC3;
+}
+
+div#beta {
+  border-top: 1px solid #FC0;
+  display: block;
+  margin: 0;
+}
+
+p#description {
+  color: #FC3;
+}
+
+div#ads {
+  display: block;
+}
+
+div#sources,
+div#syndicate,
+div#powerdby,
+div#footer,
+img {
+  display: none;
+}
+
+div#search,
+div#footprints,
+div#profile,
+div#friends,
+div#archives {
+  display: block;
+  padding: 0.5em 0 0 0;
+  margin: 1em;
+  width: 15%;
+  float: left;
+}
+
+div#search h3,
+div#footprints h3,
+div#archives h3,
+div#profile h3,
+div#friends {
+  color: #FC0;
+}
+
+div#profile img,
+div#footprints img,
+div#friends img {
+  display: block;
+  border: 2px solid #333;
+}
+
+div#tags h3 {
+  display: none;
+}
+
+div#tags {
+  clear: both;
+  display: block;
+  background-color: #FC3;
+  padding-top: 2em;
+  margin: 1em 0 0 0;
+}
+
+div#tags a {
+  color: #333;
+  display: inline;
+}
+

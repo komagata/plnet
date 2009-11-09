@@ -1,0 +1,17 @@
+ANALYZE TABLE content;
+ANALYZE TABLE content_category;
+ANALYZE TABLE custom_template;
+ANALYZE TABLE design;
+ANALYZE TABLE entry;
+ANALYZE TABLE entry_to_tag;
+ANALYZE TABLE feed;
+ANALYZE TABLE feedback;
+ANALYZE TABLE feedback_seq;
+ANALYZE TABLE foaf;
+ANALYZE TABLE footprint;
+ANALYZE TABLE member;
+ANALYZE TABLE member_temporary;
+ANALYZE TABLE member_to_content_category_to_feed;
+ANALYZE TABLE member_to_feed;
+ANALYZE TABLE site;
+ANALYZE TABLE tag;

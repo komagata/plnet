@@ -1,0 +1,16 @@
+<h2>{'service list'|msg}</h2>
+<p>{'you can add service'|msg}</p>
+{foreach from=$content_categories item=content_category}
+<h3>{$content_category.name|msg} 
+  <a href="/list/user/content_category/{$content_category.name}/">
+    <img src="/images/vcard.png" title="{'user list of content category'|msg}">
+  </a>
+</h3>
+  {foreach from=$content_category.contents item=content}
+<p>
+  <img src="{$content.icon|tofavicon}" class="favicon" />
+  <a href="{$content.uri}">{$content.name}</a>
+</p>
+<p>{$content.description|msg}</p>
+  {/foreach}
+{/foreach}

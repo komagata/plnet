@@ -1,0 +1,36 @@
+{if isset($entries_title)}
+<div id="entries_title">{$entries_title}</div>
+{/if}
+{if is_array($entries)}
+{foreach name=entry from=$entries item=entry}
+<div class="entry">
+  <h3 class="entry_title">
+    <a href="{$member->account}/{$entry.id}">{$entry.title}</a>
+  </h3>
+
+  <div class="entry_description">{$entry.description}</div>
+{if $smarty.foreach.entry.first}
+  {include file="$shared_dir/ads.html"}
+{/if}
+  <div class="entry_footer">
+  {if !empty($entry.author)}
+    <div class="entry_author">Posted by {$entry.author} at </div>
+  {/if}
+    <div class="entry_date">{$entry.formated_date} </div>
+  {if $entry.tags}
+    <div class="entry_tag">Tags: 
+    {foreach name=tags from=`$entry.tags` item=tag}
+      <a href="{$SCRIPT_PATH}{$member->account}/tag/{$tag|urlencode}">{$tag}</a>
+      {if !$smarty.foreach.tags.last}, {/if}
+    {/foreach}
+    </div>
+  {/if}
+    <div class="entry_source">
+      ({'original entry'|msg} <img class="favicon" src="{$entry.favicon|tofavicon}" /><a href="{$entry.uri}">{$entry.feed_title}</a>)
+    </div>
+  </div>
+</div>
+{/foreach}
+
+<div class="pager">{$pager.prev}　{$pager.next}</div>
+{/if}

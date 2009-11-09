@@ -1,0 +1,24 @@
+<h2>{'login'|msg}</h2>
+<form action="/login" method="post">
+<p>
+  <div class="error">{mojavi_error name='login'}</div>
+  <label>{'account'|msg}:</label><br />
+  <input type="text" name="account" id="account" class="input" value="{if $request->hasParameter('account')}{$request->getParameter('account')}{/if}" maxlength="16" /><br />
+</p>
+
+<p>
+  <label>{'password'|msg}:</label><br />
+  <input type="password" name="password" id="password" class="input" value="{if $request->hasParameter('password')}{$request->getParameter('password')}{/if}" maxlength="16" /><br />
+</p>
+
+<p>
+  <label><input type="checkbox" name="autologin" value="1" checked="true" />{'remember password'|msg}</label>
+</p>
+
+<p>
+  <input type="hidden" name="m" value="Auth" />
+  <input type="hidden" name="a" value="Login" />
+  <input type="hidden" name="mode" value="login" />
+  <input type="submit" id="login" class="submit button" value="{'login'|msg}" />
+</p>
+</form>

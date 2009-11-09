@@ -1,0 +1,45 @@
+/* top */
+#screenshot {
+  vertical-align: top;
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+
+#title {
+  font-size: 28px;
+  text-align: center;
+  margin: 0.8em 0 1.6em 0;
+  padding: 0;
+}
+
+#column_container td {
+  vertical-align: top;
+}
+
+.block {
+  margin-bottom: 1em;
+}
+
+#register_button {
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* feedback */
+#feedback_form_comment {
+  width: 400px;
+  height: 100px;
+}
+
+#feedback_form_name {
+  width: 200px;
+}
+
+.feedback {
+  margin-bottom: 9px;
+}
+
+.feedback .name {
+  font-weight: bold;
+}
+

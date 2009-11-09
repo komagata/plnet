@@ -1,0 +1,13 @@
+<table class="table">
+{foreach from=$mycontents item=mycontent}
+  <tr>
+    <td width="18">
+      <img class="favicon" width="16" height="16" src="{$mycontent->favicon|tofavicon}" />
+    </td>
+    <td><a href="{$mycontent->link}" target="_blank">{$mycontent->title}</a></td>
+    <td width="18" class="button">
+      <img src="images/delete.gif" onclick="removeMyContent({$mycontent->id})" />
+    </td>
+  </tr>
+{/foreach}
+</table>

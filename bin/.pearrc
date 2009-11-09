@@ -1,0 +1,2 @@
+#PEAR_Config 0.9
+a:7:{s:7:"php_dir";s:21:"/home/attach/pear/php";s:8:"data_dir";s:22:"/home/attach/pear/data";s:7:"ext_dir";s:21:"/home/attach/pear/ext";s:7:"doc_dir";s:22:"/home/attach/pear/docs";s:8:"test_dir";s:23:"/home/attach/pear/tests";s:9:"cache_dir";s:23:"/home/attach/pear/cache";s:7:"bin_dir";s:17:"/home/attach/pear";}

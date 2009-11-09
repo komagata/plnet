@@ -1,0 +1,26 @@
+{literal}<?xml version="1.0" encoding="utf-8" ?>{/literal}
+<rss version="2.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xml:lang="ja">
+    <channel>
+        <title>{$feed.title}</title>
+        <link>{$feed.uri}</link>
+        <description>{$feed.description}</description>
+{foreach from=$entries item=entry}
+        <item>
+            <title>{$entry.title}</title>
+            <link>{$entry.uri|urlencode}</link>
+            <description><![CDATA[{$entry.description}]]></description>
+            <content:encoded>{$entry.description|escape}</content:encoded>
+            <dc:creator>{$entry.author|default:$feed.author}</dc:creator>
+    {if isset($entry.tags) and is_array($entry.tags)}
+        {foreach from=$entry.tags item=tag}
+            <dc:subject>{$tag.name}</dc:subject>
+        {/foreach}
+    {/if}
+            <pubDate>{$entry.date|date_RFC822}</pubDate>
+        </item>
+{/foreach}
+    </channel>
+</rss>

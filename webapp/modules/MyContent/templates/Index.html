@@ -1,0 +1,68 @@
+<div id="left">
+  <h2>{'services'|msg}</h2>
+
+  <p><img src="images/message.gif" class="icon" />{'select feeds'|msg}</p>
+
+  <div id="services" class="scroll_box"><img src="/images/loading.gif" class="loading" /> {'loading...'|msg}</div>
+  <textarea id="services_template" style="display:none">
+<ul class="contents">
+{literal}
+{for contents_category in contents_categories}
+  <li class="category">${contents_category.name}(${contents_category.contents.length})</li>
+  {for content in contents_category.contents}
+  <li class="content button"
+    onmouseover="this.style.backgroundColor='#f57900'"
+    onmouseout="this.style.backgroundColor='#fff'"
+    onclick="add_service('${content.icon}', '${content.name}', '${content.target_text}', '${content.format}')"
+  >
+    <img src="/icon.php?url=${content.icon}" class="favicon" />
+    ${content.name}
+  </li>
+  {forelse}
+  {/for}
+{forelse}
+{/for}
+{/literal}
+</ul>
+  </textarea>
+
+  <p><a href="services"><img class="icon" src="images/help.gif" />{'explanation of service'|msg}</a></p>
+  <div id="add-customfeed" class="button">
+    <a href="javascript:void(0)"><img class="icon" src="images/add.gif"/>{'add original feed'|msg}</a>
+  </div>
+</div>
+
+<div id="right">
+  <h2>{'registered services'|msg}</h2>
+
+  <p><img src="images/message.gif" class="icon" />{'you can sort your services'|msg}</p>
+
+  <div id="registered_services" class="scroll_box">
+    <img src="/images/loading.gif" class="loading" /> {'loading...'|msg}
+  </div>
+  <textarea id="registered_services_template" style="display:none">
+<ul id="registered_feeds" class="feeds">
+{literal}
+{for content_category in content_categories}
+  <li id="category_0${content_category.id}" class="category">${content_category.name}</li>
+  {for feed in content_category.feeds}
+  <li id="feed_${feed.id}" class="feed button"
+    onmouseover="this.style.backgroundColor='#f57900'"
+    onmouseout="this.style.backgroundColor='#fff'">
+    <img src="/icon.php?url=${feed.favicon}" class="favicon" />
+    ${feed.title}
+    <img src="/images/delete.gif" class="favicon" onclick="remove_service(${feed.id})" />
+  </li>
+  {forelse}
+  {/for}
+{forelse}
+{/for}
+{/literal}
+</ul>
+  </textarea>
+
+  <p><a href="{$member->account}/opml"><img class="icon" src="images/opml_icon.gif" />{'export feed'|msg}</a></p>
+  <p><a href="javascript:navigator.registerContentHandler('application/vnd.mozilla.maybe.feed','{$SCRIPT_PATH}api/subscribe?uri=%s','Plnet');"><img class="icon" src="images/add.gif" />{'register the plnets feed to the firefox feed reader'|msg}</a></p>
+</div>
+
+<div style="clear:both"></div>

@@ -1,0 +1,9 @@
+<ul>
+{if isset($devfeeds) and is_array($devfeeds)}
+{foreach from=$devfeeds item=devfeed}
+  <li>
+    <a href="{$devfeed.uri}">{$devfeed.title}</a> <div class="datetime">({$devfeed.date|date_format:"%Y/%m/%d %H:%M"}){if $devfeed.new} <img src="images/new.gif" class="icon" />{/if}</div>
+  </li>
+{/foreach}
+{/if}
+</ul>

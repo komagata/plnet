@@ -1,0 +1,13 @@
+<h2>
+  {'new plnet'|msg}（<a href="list/">{'prefix new plnet'|msg}{$member_num}{'suffix new plnet'|msg}</a>）
+  <a href="{$SCRIPT_PATH}list/rss2"><img src="images/feed_icon.gif" title="{'new plnet'|msg}" class="icon" /></a>
+</h2>
+
+
+<ul>
+{foreach from=$sites item=site}
+  <li>
+    <a href="{$site->account}/">{$site->title|escape}</a> <div class="datetime">({$site->createdtime|date_format:"%Y/%m/%d %H:%M"}){if $site->createdtime|strtotime > $yesterday} <img src="images/new.gif" class="icon" />{/if}</div>
+  </li>
+{/foreach}
+</ul>

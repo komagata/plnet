@@ -1,0 +1,119 @@
+/* element */
+body {
+    background: transparent url("../images/bg.gif") repeat-x top;
+    background-color: #33436a;
+    margin: 0; padding: 0;
+    font-family: Verdana, Osaka, sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.2em;
+    line-height: 100%;
+    margin: 0.4em 0; padding: 0;
+}
+
+/* id */
+#container {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+#header {
+    border: 2px solid #f57900;
+    border-width: 6px 0 0 0;
+}
+
+#header h1 {
+    text-align: left;
+    font-size: 2.2em;
+    text-height: 100%;
+  margin: 0.5em;
+}
+
+#content {
+    margin: 0 auto;
+    text-align: left;
+    width: 760px;
+}
+
+#alpha {
+    padding: 10px;
+    background: #eee;
+}
+
+#footer {
+    color: #fff;
+    text-align: center;
+    clear: both;
+}
+
+#menu_user {
+    color: #fff;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    text-align: right;
+}
+
+/* class */
+
+/* nifty tab */
+.nifty{
+    width: 760px;
+    background: #eee;
+    margin-bottom: 10px;
+}
+
+b.rtop,
+b.rbottom{
+    width: 760px;
+    display: block;
+    background: #33436a;
+}
+
+b.rtop b,
+b.rbottom b{
+    display: block;
+    height: 1px;
+    overflow: hidden;
+    background: #eee;
+}
+
+b.r1{margin: 0 5px;}
+b.r2{margin: 0 3px;}
+b.r3{margin: 0 2px;}
+
+b.rtop b.r4,
+b.rbottom b.r4{
+    margin: 0 1px;
+    height: 2px;
+}
+/* link */
+a:link {
+  color: #eee;
+}
+a:visited {
+  color: #eee;
+}
+a:hover {
+  color: #f57900;
+}
+a img {
+  border-width:0;
+}
+
+#alpha a:link {
+  color: #f57900;
+}
+#alpha a:visited {
+  color: #f57900;
+}
+#alpha a:hover {
+  color: #000;
+}
+#alpha a:active {
+  color: #f57900;
+}

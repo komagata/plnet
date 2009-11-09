@@ -1,0 +1,34 @@
+#profile .element {
+  margin-bottom: 10px;
+}
+
+#profile .label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#profile .value {
+}
+
+#profile .photo img {
+  width: 60px;
+  height: 60px;
+}
+
+#friends .friend {
+  float: left;
+  vertical-align: middle;
+  text-align: center;
+  width: 130px;
+  margin: 5px;
+}
+
+#friends .friend .image {
+  height: 80px;
+}
+
+#friends .friend .image img {
+  margin: auto;
+  vertical-align: middle;
+}
+

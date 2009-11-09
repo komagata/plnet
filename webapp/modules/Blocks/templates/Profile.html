@@ -1,0 +1,20 @@
+<h3>{'profile'|msg}</h3>
+<ul>
+{if $member->photo_url}
+  <li class="photo"><a href="/{$member->account}/profile"><img src="{$member->photo_url}" width="60" height="60" /></a></li>
+{/if}
+  <li><a href="/{$member->account}/profile">
+{if $member->nickname}
+    {$member->nickname|escape}
+{else}
+    {$member->account|escape}
+{/if}
+    </a>
+    <a href="{$member->account}/foaf.rdf"><img src="/images/foaf_icon.gif" class="icon" /></a>
+    <a href="http://xantus.org/foaf/?foaf={$SCRIPT_PATH}{$member->account}/foaf.rdf"><img src="/images/graf.gif" class="icon" /></a>
+  </li>
+{if $member->self_introduction}
+  <li>{$member->self_introduction|escape|nl2br}</li>
+{/if}
+  <li class="description"><a href="/{$member->account}/profile">{'description'|msg}</a></li>
+</ul>

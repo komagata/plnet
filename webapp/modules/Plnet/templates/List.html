@@ -1,0 +1,27 @@
+<h2>{'plnet list'|msg}</h2>
+
+<table id="plnet_list">
+{foreach name=member from=$pager->getPageData() item=member}
+  <tr>
+    <td class="plnet_list_profile">
+      <a href="{$member.account}/">
+        <img src="{$member.profile_icon}" class="icon" />
+      </a>
+    </td>
+    <td class="plnet_list_title"><a href="{$member.account}/">{$member.title}</a></td>
+    <td class="plnet_list_icon">
+  {if count($member.feeds) > 0}
+    {foreach from=$member.feeds item=feed name=feed}
+      <a href="{$SCRIPT_PATH}{$member.account}/source/{$feed.id}">
+        <img height="16" width="16" src="{$feed.favicon|tofavicon}" class="icon" />
+      </a>
+    {/foreach}
+  {else}
+      (no service)
+  {/if}
+    </td>
+  </tr>
+{/foreach}
+</table>
+
+<div class="pager">{$pager->slider}</div>

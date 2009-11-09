@@ -1,0 +1,21 @@
+<table class="table">
+{foreach from=$contents item=content}
+  <tr onclick="selectContent({$content->id}, '{$content->name}', '{$content->format}', '{$content->target|msg}')">
+    <td width="18">
+      <div class="button">
+        <img class="favicon" width="16" height="16" src="{$content->icon|tofavicon}" title="{$content->description|msg|strip_tags}" />
+      </div>
+    </td>
+    <td>
+      <div class="button">
+        <a href="javascript:void(0)">{$content->name}</a>
+      </div>
+    </td>
+    <td width="18">
+      <div class="button">
+        <img src="images/add.gif" title="{$content->name}を追加する" />
+      </div>
+    </td>
+  </tr>
+{/foreach}
+</table>

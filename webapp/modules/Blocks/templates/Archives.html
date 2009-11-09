@@ -1,0 +1,10 @@
+<h3>{'archives'|msg}</h3>
+<ul>
+{foreach from=$archives item=archive}
+    <li>
+      <a href="{$account}/{$archive.y}/{$archive.m}/">
+        {$archive.y}年{$archive.m}月
+      </a>
+    </li>
+{/foreach}
+</ul>

@@ -1,0 +1,12 @@
+<b cass="rtop"><b class="r1"></b><b class="r2"></b><b class="r3"></b><b class="r4"></b></b>
+<table class="table">
+    <tr><th>タイトル</th><th>詳細</th><th>ユーザー</th><th>作成日</th></tr>
+{foreach from=$sites item=site}
+    <tr>
+        <td><a href="{$site->account}">{$site->title|escape}</a></td>
+        <td>{$site->description|escape|nl2br}</td>
+        <td>{$site->account}</td>
+        <td>{$site->createdtime}</td>
+    </tr>
+{/foreach}
+</table>

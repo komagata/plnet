@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xml:lang="ja">
+	<channel>
+		<title>m-komagataの日記</title>
+		<link>http://d.hatena.ne.jp/m-komagata/</link>
+		<description>m-komagataの日記</description>
+		<dc:creator>m-komagata</dc:creator>
+
+
+		<item>
+			<title>Ruby勉強日記</title>
+			<link>http://d.hatena.ne.jp/m-komagata/20060917</link>
+
+			<description>はてなを超遅ればせながらRuby勉強日記として使おうと思います。  今日思った疑問   Railsでサイトのトップページは何て言うcontroller名がいいんだろう？  fixturesのyamlの中でなんでUserオブジェクトが使えるんだろう？ </description>
+
+			<dc:creator>m-komagata</dc:creator>
+
+			<pubDate>Sat, 16 Sep 2006 15:00:00 GMT</pubDate>
+
+
+
+
+		</item>
+
+		<item>
+			<title>テスト３</title>
+			<link>http://d.hatena.ne.jp/m-komagata/20060825</link>
+
+			<description>フィードが読めない件。 </description>
+
+			<dc:creator>m-komagata</dc:creator>
+
+			<pubDate>Thu, 24 Aug 2006 15:00:00 GMT</pubDate>
+
+
+
+
+		</item>
+
+		<item>
+			<title>テスト１</title>
+			<link>http://d.hatena.ne.jp/m-komagata/20060726</link>
+
+			<description>はてなテスト </description>
+
+			<dc:creator>m-komagata</dc:creator>
+
+			<pubDate>Tue, 25 Jul 2006 15:00:00 GMT</pubDate>
+
+
+
+
+		</item>
+
+		<item>
+			<title>テストタイトル２</title>
+			<link>http://d.hatena.ne.jp/m-komagata/20060709</link>
+
+			<description>テスト日記２ ああああ うううう </description>
+
+			<dc:creator>m-komagata</dc:creator>
+
+			<pubDate>Sat, 08 Jul 2006 15:00:00 GMT</pubDate>
+
+
+
+
+		</item>
+
+		<item>
+			<title>2005-08-29</title>
+			<link>http://d.hatena.ne.jp/m-komagata/20050829</link>
+
+			<description>ハテナー  http://p0t.jp </description>
+
+			<dc:creator>m-komagata</dc:creator>
+
+			<pubDate>Sun, 28 Aug 2005 15:00:00 GMT</pubDate>
+
+
+
+
+		</item>
+
+	</channel>
+</rss>

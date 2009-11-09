@@ -1,0 +1,10 @@
+<h3>{'categories'|msg}</h3>
+<ul>
+{foreach from=$categories item=category}
+  <li>
+    <a href="/{$params.account}/category/{$category.id}">
+    {$category.name}
+    </a>
+  </li>
+{/foreach}
+</ul>

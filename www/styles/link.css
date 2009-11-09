@@ -1,0 +1,51 @@
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #f57900;
+}
+
+a:visited {
+  color: #f57900;
+}
+
+a:hover {
+  color: #f57900;
+  text-decoration: underline;
+}
+
+#content a:link {
+  color: #f57900;
+}
+
+#content a:visited {
+  color: #f57900;
+}
+
+#content a:hover {
+  color: #000;
+}
+
+#content a:active {
+  color: #f57900;
+}
+
+#menu a:link {
+  color: #f57900;
+}
+
+#menu a:visited {
+  color: #f57900;
+}
+
+#menu a:hover {
+  color: #000;
+}
+
+#menu a:active {
+  color: #f57900;
+}
+
+#footer a {
+}

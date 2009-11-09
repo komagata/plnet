@@ -1,0 +1,9 @@
+<h3>Sources</h3>
+<ul>
+{foreach from=$sources item=source}
+  <li>
+    <img height="16" width="16" src="{$source.icon|tofavicon}" class="icon" />
+    <a href="{$SCRIPT_PATH}{$member->account}/source/{$source.id}">{$source.name}</a>
+  </li>
+{/foreach}
+</ul>

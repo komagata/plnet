@@ -1,0 +1,109 @@
+.loading {
+  margin: 5px;
+  vertical-align: middle;
+}
+
+.mini_link {
+  font-size: 10px;
+  margin: 12px 0;
+}
+
+.input {
+  width: 300px;
+}
+
+#alpha {
+  position: relative;
+  height: 390px;
+}
+
+#alpha #left {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 380px;
+}
+
+#alpha #right {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 380px;
+}
+
+#alpha #friends_list {
+  position: absolute;
+  top: 150px;
+  left: 20px;
+  width: 760px;
+}
+
+.friends_box {
+  width: 760px;
+  height: 200px;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+.friends_box table {
+  width: 100%;
+}
+
+.friends_box table tr td {
+  padding: 3px;
+}
+
+#alpha p {
+  margin: 8px 0;
+}
+
+.scroll_box {
+  width: 380px;
+  height: 100px;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+.scroll_box table {
+  width: 100%;
+}
+
+.scroll_box table tr td {
+  font-size: 12px;
+  padding: 3px;
+}
+
+.friend {
+  float: left;
+  vertical-align: middle;
+  text-align: center;
+  width: 130px;
+  margin: 5px;
+}
+
+.friend .image {
+  height: 80px;
+}
+
+.friend .image img {
+  margin: auto;
+  vertical-align: middle;
+}
+
+.friend .name {
+}
+
+.dwindow {
+  padding: 12px;
+  border-top: solid 20px #33436b;
+/*
+  border-top: solid 20px #f57900;
+*/
+  background: #fff;
+}
+
+#dinput {
+  width: 80%;
+}

@@ -1,0 +1,14 @@
+<div id="friends">
+  <h3>{'friends'|msg}({$friends_length})</h3>
+{foreach from=$friends item=friend}
+  <div class="friend">
+    <div class="image">
+      <a href="{$friend.weblog}"><img src="{$friend.img}" /></a>
+    </div>
+    <div class="name">
+      <a href="{$friend.seeAlso}"><img src="/images/foaf_icon.gif" class="icon" /></a>
+      <a href="{$friend.weblog}">{$friend.nick}</a>
+    </div>
+  </div>
+{/foreach}
+</div>

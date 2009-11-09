@@ -1,0 +1,48 @@
+{literal}<?xml version="1.0" encoding="utf-8"?>{/literal}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="webservice,plnet,flickr,blogger,del.icio.us,ウェブサービス">
+<meta name="description" content="{'plnet meta description'|msg}">
+<meta name="verify-v1" content="IX9X7pRJBD99sEfGPdWznYP4tjtOoGs+UM9CqaNR1Vc=" />
+<base href="{$SCRIPT_PATH}" target="_self">
+{css_link_tag name=niftyCorners}
+{css_link_tag name=niftyPrint media=print}
+{css_link_tag name=style}
+{css_link_tag name=public}
+{js_link_tag name=nifty}
+{js_link_tag name=prototype}
+{if $module == 'Top' and $action == 'Feedback'}
+{js_link_tag name=top-feedback}
+{/if}
+{if $module == 'Top' and $action == 'Index'}
+<link rel="alternate" type="application/rss+xml" title="{'new plnet'|msg}" href="{$SCRIPT_PATH}list/rss2" />
+<link rel="alternate" type="application/rss+xml" title="{'plnet development blog'|msg}" href="{$DEV_FEED_URI}" />
+{/if}
+<link rel="shortcut icon" href="{$SCRIPT_PATH}favicon.ico">
+<title>{$title}</title>
+</head>
+
+<body>
+{include file="$shared_dir/analytics.html"}
+<div id="container">
+  <div id="header">
+{include file="$shared_dir/title.html"}
+{mojavi_action module=Blocks action=MenuTop}
+  </div>
+
+  <div id="content">
+    <div id="alpha">
+{$partial|indent:6:" "}
+    </div>
+  </div>
+{include file="$shared_dir/footer.html"}
+</div>
+<script type="text/javascript" src="scripts/corner-simple.js"></script>
+<script type="text/javascript" src="https://cetrk.com/pages/scripts/0005/7233.js"> </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+<?xml-stylesheet href="http://d.hatena.ne.jp/m-komagata/rssxsl" type="text/xsl" media="screen"?>
+
+
+<rdf:RDF
+	xmlns="http://purl.org/rss/1.0/"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xml:lang="ja">
+<channel rdf:about="http://d.hatena.ne.jp/m-komagata/rss">
+	<title>m-komagataの日記</title>
+	<link>http://d.hatena.ne.jp/m-komagata/</link>
+	<description>m-komagataの日記</description>
+	
+	<dc:creator>m-komagata</dc:creator>
+	<dc:date>2006-09-17T17:02:25+09:00</dc:date>
+	<items>
+	<rdf:Seq>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/m-komagata/20060917"/>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/m-komagata/20060825"/>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/m-komagata/20060726"/>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/m-komagata/20060709"/>
+		<rdf:li rdf:resource="http://d.hatena.ne.jp/m-komagata/20050829"/>
+	</rdf:Seq>
+	</items>
+</channel>
+
+
+
+<item rdf:about="http://d.hatena.ne.jp/m-komagata/20060917">
+	<title>Ruby勉強日記</title>
+	<link>http://d.hatena.ne.jp/m-komagata/20060917</link>
+	<description>はてなを超遅ればせながらRuby勉強日記として使おうと思います。  今日思った疑問   Railsでサイトのトップページは何て言うcontroller名がいいんだろう？  fixturesのyamlの中でなんでUserオブジェクトが使えるんだろう？ </description>
+	<dc:creator>m-komagata</dc:creator>
+	<dc:date>2006-09-17</dc:date>
+</item>
+<item rdf:about="http://d.hatena.ne.jp/m-komagata/20060825">
+	<title>テスト３</title>
+	<link>http://d.hatena.ne.jp/m-komagata/20060825</link>
+	<description>フィードが読めない件。 </description>
+	<dc:creator>m-komagata</dc:creator>
+	<dc:date>2006-08-25</dc:date>
+</item>
+<item rdf:about="http://d.hatena.ne.jp/m-komagata/20060726">
+	<title>テスト１</title>
+	<link>http://d.hatena.ne.jp/m-komagata/20060726</link>
+	<description>はてなテスト </description>
+	<dc:creator>m-komagata</dc:creator>
+	<dc:date>2006-07-26</dc:date>
+</item>
+<item rdf:about="http://d.hatena.ne.jp/m-komagata/20060709">
+	<title>テストタイトル２</title>
+	<link>http://d.hatena.ne.jp/m-komagata/20060709</link>
+	<description>テスト日記２ ああああ うううう </description>
+	<dc:creator>m-komagata</dc:creator>
+	<dc:date>2006-07-09</dc:date>
+</item>
+<item rdf:about="http://d.hatena.ne.jp/m-komagata/20050829">
+	<title>2005-08-29</title>
+	<link>http://d.hatena.ne.jp/m-komagata/20050829</link>
+	<description>ハテナー  http://p0t.jp </description>
+	<dc:creator>m-komagata</dc:creator>
+	<dc:date>2005-08-29</dc:date>
+</item>
+</rdf:RDF>

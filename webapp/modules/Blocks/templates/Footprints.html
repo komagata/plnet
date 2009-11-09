@@ -1,0 +1,9 @@
+<h3>{'footprint'|msg}</h3>
+<ul>
+{foreach from=$footprints item=footprint}
+  <li>
+    <a href="{$footprint.link}"><img src="{$footprint.profile_icon}" width="35" height="35" /></a>
+    <a href="{$footprint.link}">{$footprint.name}</a>
+  </li>
+{/foreach}
+</ul>

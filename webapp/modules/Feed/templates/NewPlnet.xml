@@ -1,0 +1,20 @@
+{literal}<?xml version="1.0" encoding="utf-8" ?>{/literal}
+<rss version="2.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xml:lang="ja">
+    <channel>
+        <title>{$title}</title>
+        <link>{$uri}</link>
+        <description>{$description}</description>
+{foreach from=$sites item=site}
+        <item>
+            <title>{$site->title}</title>
+            <link>{$SCRIPT_PATH}{$site->account}/</link>
+            <description><![CDATA[{$site->description}]]></description>
+            <dc:creator>{$site->account}</dc:creator>
+            <pubDate>{$site->createdtime|date_RFC822}</pubDate>
+        </item>
+{/foreach}
+    </channel>
+</rss>

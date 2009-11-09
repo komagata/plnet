@@ -1,0 +1,176 @@
+@import "font.css";
+@import "link.css";
+@import "plnet-base.css";
+
+#catch-phrase {
+  color: #fff
+}
+
+#content ul {
+  margin: 13px;
+  padding: 0;
+  list-style-type: square;
+}
+
+#content li {
+  line-height: 180%;
+}
+
+/* class */
+.text {
+  width: 160px;
+}
+
+.datetime {
+  display: inline;
+}
+
+#dwindow {
+  background: #fff;
+  text-align: left;
+  width: 200px;
+  border-top: solid 1px #fff;
+  border-left: solid 1px #fff;
+  border-right: solid 1px #333;
+  border-bottom: solid 1px #333;
+  padding: 10px;
+}
+
+/* top */
+#screenshot {
+  vertical-align: top;
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+
+#title {
+  font-size: 28px;
+  text-align: center;
+  margin: 0.8em 0 1.6em 0;
+  padding: 0;
+}
+
+#column_container td {
+  vertical-align: top;
+}
+
+.block {
+  margin-bottom: 1em;
+}
+
+#register_button {
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* feedback */
+#feedback_form_comment {
+  width: 400px;
+  height: 100px;
+}
+
+#feedback_form_name {
+  width: 200px;
+}
+
+.feedback {
+  margin-bottom: 9px;
+}
+
+.feedback .name {
+  font-weight: bold;
+}
+
+/* plnet-list */
+#plnet_list {
+  margin: 1em 0;
+}
+
+.plnet_list_title {
+  padding-right: 1em;
+}
+
+.plnet_list_profile {
+  padding-right: 1em;
+}
+
+.plnet_list_icon {
+}
+
+.plnet_list_profile img {
+  width: 45px;
+  height: 45px;
+  border: solid 1px #ccc;
+}
+
+/* tag */
+#entries_title {
+  font-size: 22px;
+  margin-bottom: 1em;
+}
+
+.entry blockquote {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 6px;
+  border: 1px solid #ccc;
+  width: 95%;
+}
+
+.entry pre {
+  overflow: auto;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 6px;
+  width: 95%;
+}
+
+.entry img {
+  border: none;
+  vertical-align: middle;
+}
+
+.entry_title {
+  font-size: 14px;
+}
+
+.entry {
+  line-height: 180%;
+  margin-bottom: 3em;
+}
+
+.entry_description table {
+  width: 500px;
+}
+
+.entry_footer {
+  text-align: right;
+}
+
+.entry_author,
+.entry_date,
+.entry_comment {
+  display: inline;
+}
+
+.entry_source {
+  text-align: right;
+}
+
+.entry_source img {
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+.favicon {
+  width: 16px;
+  height: 16px;
+}
+
+.tag {
+  margin-right: 32px;
+}
+
+.pager {
+  text-align: center;
+}

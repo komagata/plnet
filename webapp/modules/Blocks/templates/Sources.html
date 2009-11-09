@@ -1,0 +1,11 @@
+<h3>{'sources'|msg}</h3>
+<ul>
+{foreach from=$sources item=source}
+  <li>
+    <img height="16" width="16" src="{$source->favicon|tofavicon}" class="icon" />
+    <a href="/{$params.account}/source/{$source->id}">
+    {$source->title} ({$source->cnt})
+    </a>
+  </li>
+{/foreach}
+</ul>

@@ -1,0 +1,10 @@
+#menu_top {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  text-align: right;
+}
+
+#menu_top li {
+  display: inline;
+}

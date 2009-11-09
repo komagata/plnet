@@ -1,0 +1,34 @@
+    <div id="menu_top">
+{if $user->isAuthenticated()}
+      {'hello'|msg} <a href="setting/user">{$member->account}</a> | <a href="{$member->account}/">{'my plnet'|msg}</a> | <a href="setting/feed">{'setting'|msg}</a> | <a href="logout">{'logout'|msg}</a>
+{else}
+      <a href="register">{'register'|msg}</a> | <a href="/login">{'login'|msg}</a>
+<!--
+    <div id="login_window" style="display:none">
+      <h2>{'login'|msg}</h2>
+      <p><div class="error">{mojavi_error name='login'}</div>
+        <label>{'account'|msg}:</label><br />
+        <input type="text" name="account" id="account" class="input" value="{if $request->hasParameter('account')}{$request->getParameter('account')}{/if}" maxlength="16" /></p><br />
+
+      <p><label>{'password'|msg}:</label><br />
+        <input type="password" name="password" id="password" class="input" value="{if $request->hasParameter('password')}{$request->getParameter('password')}{/if}" maxlength="16" /></p><br />
+
+      <p><label><input type="checkbox" name="autologin" value="1" checked="true" />{'remember password'|msg}</label></p>
+
+      <p><input type="submit" id="login" class="submit button" value="{'login'|msg}" /></p>
+    </div>
+<script type="text/javascript" src="scripts/Widget/Window.js"></script>
+<script type="text/javascript">
+{literal}
+function open_login_window() {
+  var w = new Widget.Window({
+    width:300,
+    height:220
+  })
+  w.open(document.getElementById('login_window').innerHTML);
+}
+{/literal}
+</script>
+-->
+{/if}
+    </div>

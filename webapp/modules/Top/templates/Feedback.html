@@ -1,0 +1,42 @@
+<div class="block">
+  <h2>{'feedback'|msg} <a href="feedback/rss"><img class="icon" src="images/feed_icon.gif" /></a></h2>
+  <div id="feedback_form">
+    <p>{'give me feedback'|msg}</p>
+    <p>
+      <label>{'feedback name'|msg}</label><br />
+      <input type="text" name="feedback_form_name" id="feedback_form_name" />
+      <span id="feedback_form_name_info"></span>
+    </p>
+    <p><label>{'feedback comment'|msg}</label><br />
+      <textarea name="feedback_form_commnet" id="feedback_form_comment"></textarea>
+      <span id="feedback_form_comment_info"></span>
+    </p>
+    <p>
+      <button id="submit" class="submit">{'post a comment'|msg}</button>
+      <span id="submit_info" class="icon"></span>
+      <span id="loading" class="icon"></span>
+    </p>
+  </div>
+  <div class="pager"></div>
+  <div id="feedbacks"></div>
+  <div class="pager"></div>
+</div>
+
+<div class="block">
+  <h2>{'support chat'|msg}</h2>
+  <p><script type="text/javascript" src="http://www.lingr.com/room/cLhyxc7aYm1/badge/render" charset="utf-8"></script></p>
+</div>
+
+<div class="block">
+  <h2>{'task list'|msg}</h2>
+  <ul>
+    <li>
+      <a href="http://trac.plnet.jp/projects/plnet/report/1">{'task list'|msg}</a><br />
+      {'task list explanation'|msg}
+    </li>
+    <li>
+      <a href="http://trac.plnet.jp/projects/plnet/timeline">{'update history'|msg}</a><br />
+      {'update history explanation'|msg}
+    </li>
+  </ul>
+</div>
